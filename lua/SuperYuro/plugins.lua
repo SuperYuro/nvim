@@ -153,13 +153,7 @@ return require('packer').startup(function(use)
     'akinsho/bufferline.nvim',
     config = function()
       local bufferline = require 'bufferline'
-      local highlights = require('nord').bufferline.highlights {
-        italic = true,
-        bold = true,
-        fill = '#181c24',
-      }
       bufferline.setup {
-        highlights = highlights,
         options = {
           mode = 'tabs',
           themable = true,
