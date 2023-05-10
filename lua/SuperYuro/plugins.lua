@@ -38,7 +38,7 @@ return require('packer').startup(function(use)
     branch = 'v2',
     config = function()
       require('hop').setup()
-      vim.keymap.set('n', '<space><space>', ':HopWord<CR>', { silent = true, noremap = true })
+      vim.keymap.set('n', '<leader><leader>', ':HopWord<CR>', { silent = true, noremap = true })
     end,
   }
 
