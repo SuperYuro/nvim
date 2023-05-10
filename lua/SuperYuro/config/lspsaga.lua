@@ -1,7 +1,8 @@
 local lspsaga = require 'lspsaga'
 
-local keymap = vim.keymap
 local opts = { silent = true, noremap = true }
+
+local quit_keys = { 'q', '<ESC>', '<C-c>' }
 
 lspsaga.setup {
   preview = {
@@ -23,7 +24,7 @@ lspsaga.setup {
     winblend = 0,
     expand = '',
     collapse = '',
-    code_action = '💡',
+    code_action = '',
     incoming = ' ',
     outgoing = ' ',
     hover = ' ',
@@ -36,21 +37,21 @@ lspsaga.setup {
     vsplit = '<C-c>v',
     split = '<C-c>i',
     tabe = '<C-c>t',
-    quit = 'q',
+    quit = quit_keys,
   },
 
   -- hover
   hover = {
     max_width = 0.6,
     open_link = 'gx',
-    open_browser = '!chrome',
+    open_browser = '!firefox',
   },
 
   -- type_definition
 
   -- rename
   rename = {
-    quit = '<C-c>',
+    quit = quit_keys,
     exec = '<CR>',
     mark = 'x',
     confirm = '<CR>',
@@ -64,7 +65,7 @@ lspsaga.setup {
     extend_gitsigns = true,
     keys = {
       -- string | table type
-      quit = 'q',
+      quit = quit_keys,
       exec = '<CR>',
     },
   },
@@ -84,29 +85,11 @@ lspsaga.setup {
     keys = {
       jump_to = 'p',
       expand_or_jump = 'o',
-      vsplit = 's',
-      split = 'i',
-      tabe = 't',
+      vsplit = 'v',
+      split = 's',
       tabnew = 'r',
-      quit = { 'q', '<ESC>' },
-      close_in_preview = '<ESC>',
-    },
-  },
-
-  -- outline
-  outline = {
-    win_position = 'right',
-    win_with = '',
-    win_width = 30,
-    preview_width = 0.4,
-    show_detail = true,
-    auto_preview = true,
-    auto_refresh = true,
-    auto_close = true,
-    custom_sort = nil,
-    keys = {
-      expand_or_jump = 'o',
-      quit = 'q',
+      quit = quit_keys,
+      close_in_preview = quit_keys,
     },
   },
 }
@@ -120,4 +103,3 @@ vim.keymap.set('n', '<leader>rn', ':Lspsaga rename<CR>', opts) -- rename
 vim.keymap.set('n', '<leader>ca', ':Lspsaga code_action<CR>', opts) -- code_action
 vim.keymap.set('v', '<leader>ca', ':Lspsaga range_code_action<CR>', opts) -- code_action for selected buffer
 vim.keymap.set('n', 'gr', ':Lspsaga lsp_finder<CR>', opts) -- references
-vim.keymap.set('n', '<C-o>', ':Lspsaga outline<CR>', opts) --outline
