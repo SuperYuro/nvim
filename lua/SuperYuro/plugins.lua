@@ -25,7 +25,7 @@ return require('packer').startup(function(use)
   use {
     'shaunsingh/nord.nvim',
     config = function()
-      vim.g.nord_contrast = true
+      vim.g.nord_contrast = false
       vim.g.nord_borders = true
       vim.g.nord_italic = true
       vim.cmd [[colorscheme nord]]
@@ -49,13 +49,7 @@ return require('packer').startup(function(use)
       'nvim-tree/nvim-web-devicons',
     },
     config = function()
-      require('nvim-tree').setup {
-        sort_by = 'case_sensitive',
-        filters = {
-          dotfiles = true,
-        },
-      }
-      vim.keymap.set('n', '<C-f>', ':NvimTreeToggle<CR>', { silent = true })
+      require 'SuperYuro.config.nvim-tree'
     end,
   }
 
@@ -71,7 +65,7 @@ return require('packer').startup(function(use)
     end,
   }
 
-  -- Show lsp progress
+  -- Sho lsp progress
   use {
     'j-hui/fidget.nvim',
     config = function()
@@ -279,6 +273,9 @@ return require('packer').startup(function(use)
   -- Debag adapter protocol
   use {
     'mfussenegger/nvim-dap',
+    requires = {
+      'rcarriga/nvim-dap-ui',
+    },
     config = function()
       require 'SuperYuro.config.nvim-dap'
     end,
