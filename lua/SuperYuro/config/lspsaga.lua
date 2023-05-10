@@ -32,12 +32,12 @@ lspsaga.setup {
 
   -- definition
   definition = {
-    edit = "<C-c>o",
-    vsplit = "<C-c>v",
-    split = "<C-c>i",
-    tabe = "<C-c>t",
-    quit = "q",
-  }
+    edit = '<C-c>o',
+    vsplit = '<C-c>v',
+    split = '<C-c>i',
+    tabe = '<C-c>t',
+    quit = 'q',
+  },
 
   -- hover
   hover = {
@@ -45,7 +45,6 @@ lspsaga.setup {
     open_link = 'gx',
     open_browser = '!chrome',
   },
-
 
   -- type_definition
 
@@ -114,11 +113,11 @@ lspsaga.setup {
 
 -- Following settings are based on nvim-lspconfig's default settings.
 vim.keymap.set('n', '<leader>e', ':Lspsaga show_line_diagnostics<CR>', opts) -- diagnostics
-vim.keymap.set('n', 'gd', ':Lspsaga goto_definition<CR>', opts)              -- definition
-vim.keymap.set('n', 'K', ':Lspsaga hover_doc<CR>', opts)                     -- hover
-vim.keymap.set('n', '<leader>D', ':Lspsaga goto_type_definition<CR>', opts)  -- type_definition
-vim.keymap.set('n', '<leader>rn', ':Lspsaga rename<CR>', opts)               -- rename
-vim.keymap.set('n', '<leader>ca', ':Lspsaga code_action<CR>', opts)          -- code_action
-vim.keymap.set('v', '<leader>ca', ':Lspsaga range_code_action<CR>', opts)    -- code_action for selected buffer
-vim.keymap.set('n', 'gr', ':Lspsaga lsp_finder<CR>', opts)                   -- references
-vim.keymap.set("n", "<C-o>", ":Lspsaga outline<CR>", opts)                   --outline
+vim.keymap.set('n', 'gd', ':Lspsaga goto_definition<CR>', opts) -- definition
+vim.keymap.set('n', 'K', ':Lspsaga hover_doc<CR>', opts) -- hover
+vim.keymap.set('n', '<leader>D', ':Lspsaga goto_type_definition<CR>', opts) -- type_definition
+vim.keymap.set('n', '<leader>rn', ':Lspsaga rename<CR>', opts) -- rename
+vim.keymap.set('n', '<leader>ca', ':Lspsaga code_action<CR>', opts) -- code_action
+vim.keymap.set('v', '<leader>ca', ':Lspsaga range_code_action<CR>', opts) -- code_action for selected buffer
+vim.keymap.set('n', 'gr', ':Lspsaga lsp_finder<CR>', opts) -- references
+vim.keymap.set('n', '<C-o>', ':Lspsaga outline<CR>', opts) --outline
