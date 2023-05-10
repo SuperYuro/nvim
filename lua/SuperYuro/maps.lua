@@ -1,3 +1,5 @@
+vim.g.mapleader = ' '
+
 -- Don'y yank with x
 vim.keymap.set('n', 'x', '"_x')
 
