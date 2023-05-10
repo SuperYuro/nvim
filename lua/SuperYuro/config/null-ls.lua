@@ -31,3 +31,7 @@ null_ls.setup {
     null_ls.builtins.formatting.prettier,
   },
 }
+
+vim.keymap.set('n', '<leader>f', function()
+  vim.lsp.buf.format { async = true }
+end, { silent = true, noremap = true })
