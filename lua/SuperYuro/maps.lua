@@ -1,6 +1,19 @@
 local opts = { silent = true, noremap = true }
+local silents = { silent = true }
 
 vim.g.mapleader = ' '
+
+-- cursor manipulation like Emacs
+vim.keymap.set('i', '<C-f>', '<Right>', silents)
+vim.keymap.set('i', '<C-b>', '<Left>', silents)
+vim.keymap.set('i', '<C-p>', '<Up>', silents)
+vim.keymap.set('i', '<C-n>', '<Down>', silents)
+
+vim.keymap.set('i', '<C-a>', '<Home>', silents)
+vim.keymap.set('i', '<C-e>', '<End>', silents)
+
+vim.keymap.set('i', '<A-f>', '<C-Right>', silents)
+vim.keymap.set('i', '<A-b>', '<C-Left>', silents)
 
 -- Split buffer
 vim.keymap.set('n', 'ss', ':split<CR>', opts)
