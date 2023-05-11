@@ -2,8 +2,6 @@ local lspsaga = require 'lspsaga'
 
 local opts = { silent = true, noremap = true }
 
-local quit_keys = { 'q', '<ESC>', '<C-c>' }
-
 lspsaga.setup {
   preview = {
     lines_above = 0,
@@ -37,7 +35,7 @@ lspsaga.setup {
     vsplit = '<C-c>v',
     split = '<C-c>i',
     tabe = '<C-c>t',
-    quit = quit_keys,
+    quit = 'q',
   },
 
   -- hover
@@ -51,7 +49,7 @@ lspsaga.setup {
 
   -- rename
   rename = {
-    quit = quit_keys,
+    quit = '<C-c>',
     exec = '<CR>',
     mark = 'x',
     confirm = '<CR>',
@@ -65,10 +63,11 @@ lspsaga.setup {
     extend_gitsigns = true,
     keys = {
       -- string | table type
-      quit = quit_keys,
+      quit = 'q',
       exec = '<CR>',
     },
   },
+
   lightbulb = {
     enable = true,
     enable_in_insert = true,
@@ -88,9 +87,21 @@ lspsaga.setup {
       vsplit = 'v',
       split = 's',
       tabnew = 'r',
-      quit = quit_keys,
-      close_in_preview = quit_keys,
+      quit = { 'q', '<ESC>' },
+      close_in_preview = '<ESC>',
     },
+  },
+
+  -- Symbols in winbar
+  symbol_in_winbar = {
+    enable = true,
+    separator = ' ',
+    ignore_patterns = {},
+    hide_keyword = true,
+    show_file = true,
+    folder_level = 2,
+    respect_root = false,
+    color_mode = true,
   },
 }
 
