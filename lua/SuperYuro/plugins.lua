@@ -23,17 +23,16 @@ return require('packer').startup(function(use)
 
   -- Colorscheme
   use {
-    'Mofiqul/vscode.nvim',
+    'Mofiqul/dracula.nvim',
     config = function()
-      require('vscode').setup {
-        transparent = true,
-        italic_comments = true,
-        disable_nvimtree_bg = true,
+      require('dracula').setup {
+        show_end_of_buffer = true,
+        transparent_bg = false,
+        italic_comment = true,
       }
-      require('vscode').load()
+      vim.cmd 'colorscheme dracula'
     end,
   }
-
   -- Jump anywhere
   use {
     'phaazon/hop.nvim',
@@ -107,10 +106,10 @@ return require('packer').startup(function(use)
     requires = {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope-file-browser.nvim', -- File browser
-      'chip/telescope-software-licenses.nvim',      -- Search Software License
-      'xiyaowong/telescope-emoji.nvim',             -- Search emoji
-      'fcying/telescope-ctags-outline.nvim',        -- Get outline
-      'LinArcX/telescope-env.nvim',                 -- Show environment variables
+      'chip/telescope-software-licenses.nvim', -- Search Software License
+      'xiyaowong/telescope-emoji.nvim', -- Search emoji
+      'fcying/telescope-ctags-outline.nvim', -- Get outline
+      'LinArcX/telescope-env.nvim', -- Show environment variables
     },
     config = function()
       require 'SuperYuro.config.telescope'
@@ -123,7 +122,7 @@ return require('packer').startup(function(use)
     config = function()
       require('lualine').setup {
         options = {
-          theme = 'vscode',
+          theme = 'auto',
         },
         sections = {
           lualine_a = { 'mode' },
@@ -170,48 +169,6 @@ return require('packer').startup(function(use)
           separator_style = 'slant',
           always_show_bufferline = true,
         },
-        highlights = {
-          fill = {
-            fg = { attribute = 'fg', highlight = 'Normal' },
-            bg = { attribute = 'bg', highlight = 'StatusLineNC' },
-          },
-          background = {
-            fg = { attribute = 'fg', highlight = 'Normal' },
-            bg = { attribute = 'bg', highlight = 'StatusLine' },
-          },
-          buffer_visible = {
-            fg = { attribute = 'fg', highlight = 'Normal' },
-            bg = { attribute = 'bg', highlight = 'Normal' },
-          },
-          buffer_selected = {
-            fg = { attribute = 'fg', highlight = 'Normal' },
-            bg = { attribute = 'bg', highlight = 'Normal' },
-          },
-          separator = {
-            fg = { attribute = 'bg', highlight = 'Normal' },
-            bg = { attribute = 'bg', highlight = 'StatusLine' },
-          },
-          separator_selected = {
-            fg = { attribute = 'fg', highlight = 'Special' },
-            bg = { attribute = 'bg', highlight = 'Normal' },
-          },
-          separator_visible = {
-            fg = { attribute = 'fg', highlight = 'Normal' },
-            bg = { attribute = 'bg', highlight = 'StatusLineNC' },
-          },
-          close_button = {
-            fg = { attribute = 'fg', highlight = 'Normal' },
-            bg = { attribute = 'bg', highlight = 'StatusLine' },
-          },
-          close_button_selected = {
-            fg = { attribute = 'fg', highlight = 'Normal' },
-            bg = { attribute = 'bg', highlight = 'Normal' },
-          },
-          close_button_visible = {
-            fg = { attribute = 'fg', highlight = 'Normal' },
-            bg = { attribute = 'bg', highlight = 'Normal' },
-          },
-        },
       }
       vim.keymap.set('n', '<TAB>', ':BufferLineCycleNext<CR>', { silent = true })
       vim.keymap.set('n', '<S-TAB>', ':BufferLineCyclePrev<CR>', { silent = true })
@@ -223,8 +180,8 @@ return require('packer').startup(function(use)
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
     requires = {
-      'windwp/nvim-ts-autotag',         -- Pair HTML tags automatically
-      'mrjones2014/nvim-ts-rainbow',    -- Rainbow brackets
+      'windwp/nvim-ts-autotag', -- Pair HTML tags automatically
+      'mrjones2014/nvim-ts-rainbow', -- Rainbow brackets
       'RRethy/nvim-treesitter-endwise', -- Complete end automatically
     },
     config = function()
@@ -264,42 +221,42 @@ return require('packer').startup(function(use)
     'folke/trouble.nvim',
     config = function()
       require('trouble').setup {
-        position = 'bottom',            -- position of the list can be: bottom, top, left, right
-        height = 10,                    -- height of the trouble list when position is top or bottom
-        width = 50,                     -- width of the list when position is left or right
-        icons = true,                   -- use devicons for filenames
+        position = 'bottom', -- position of the list can be: bottom, top, left, right
+        height = 10, -- height of the trouble list when position is top or bottom
+        width = 50, -- width of the list when position is left or right
+        icons = true, -- use devicons for filenames
         mode = 'workspace_diagnostics', -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
-        fold_open = '',              -- icon used for open folds
-        fold_closed = '',            -- icon used for closed folds
-        group = true,                   -- group results by file
-        padding = true,                 -- add an extra new line on top of the list
+        fold_open = '', -- icon used for open folds
+        fold_closed = '', -- icon used for closed folds
+        group = true, -- group results by file
+        padding = true, -- add an extra new line on top of the list
         action_keys = {
           -- key mappings for actions in the trouble list
           -- map to {} to remove a mapping, for example:
           -- close = {},
-          close = 'q',                     -- close the list
-          cancel = '<esc>',                -- cancel the preview and get back to your last window / buffer / cursor
-          refresh = 'r',                   -- manually refresh
-          jump = { '<cr>', '<tab>' },      -- jump to the diagnostic or open / close folds
-          open_split = { '<c-x>' },        -- open buffer in new split
-          open_vsplit = { '<c-v>' },       -- open buffer in new vsplit
-          open_tab = { '<c-t>' },          -- open buffer in new tab
-          jump_close = { 'o' },            -- jump to the diagnostic and close the list
-          toggle_mode = 'm',               -- toggle between "workspace" and "document" diagnostics mode
-          toggle_preview = 'P',            -- toggle auto_preview
-          hover = 'K',                     -- opens a small popup with the full multiline message
-          preview = 'p',                   -- preview the diagnostic location
-          close_folds = { 'zM', 'zm' },    -- close all folds
-          open_folds = { 'zR', 'zr' },     -- open all folds
-          toggle_fold = { 'zA', 'za' },    -- toggle fold of current file
-          previous = 'k',                  -- previous item
-          next = 'j',                      -- next item
+          close = 'q', -- close the list
+          cancel = '<esc>', -- cancel the preview and get back to your last window / buffer / cursor
+          refresh = 'r', -- manually refresh
+          jump = { '<cr>', '<tab>' }, -- jump to the diagnostic or open / close folds
+          open_split = { '<c-x>' }, -- open buffer in new split
+          open_vsplit = { '<c-v>' }, -- open buffer in new vsplit
+          open_tab = { '<c-t>' }, -- open buffer in new tab
+          jump_close = { 'o' }, -- jump to the diagnostic and close the list
+          toggle_mode = 'm', -- toggle between "workspace" and "document" diagnostics mode
+          toggle_preview = 'P', -- toggle auto_preview
+          hover = 'K', -- opens a small popup with the full multiline message
+          preview = 'p', -- preview the diagnostic location
+          close_folds = { 'zM', 'zm' }, -- close all folds
+          open_folds = { 'zR', 'zr' }, -- open all folds
+          toggle_fold = { 'zA', 'za' }, -- toggle fold of current file
+          previous = 'k', -- previous item
+          next = 'j', -- next item
         },
-        indent_lines = true,               -- add an indent guide below the fold icons
-        auto_open = false,                 -- automatically open the list when you have diagnostics
-        auto_close = false,                -- automatically close the list when you have no diagnostics
-        auto_preview = true,               -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
-        auto_fold = false,                 -- automatically fold a file trouble list at creation
+        indent_lines = true, -- add an indent guide below the fold icons
+        auto_open = false, -- automatically open the list when you have diagnostics
+        auto_close = false, -- automatically close the list when you have no diagnostics
+        auto_preview = true, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
+        auto_fold = false, -- automatically fold a file trouble list at creation
         auto_jump = { 'lsp_definitions' }, -- for the given modes, automatically jump if there is only a single result
         signs = {
           -- icons / text used for a diagnostic
@@ -338,15 +295,15 @@ return require('packer').startup(function(use)
   use {
     'hrsh7th/nvim-cmp',
     requires = {
-      'onsails/lspkind.nvim',                 -- Icons
-      'hrsh7th/cmp-nvim-lsp',                 -- from LSP
-      'hrsh7th/cmp-buffer',                   -- from Buffer
-      'hrsh7th/cmp-path',                     -- from file path
-      'hrsh7th/cmp-cmdline',                  -- Complete command line
-      'hrsh7th/cmp-vsnip',                    -- from snippet
-      'hrsh7th/vim-vsnip',                    -- from snippet
+      'onsails/lspkind.nvim', -- Icons
+      'hrsh7th/cmp-nvim-lsp', -- from LSP
+      'hrsh7th/cmp-buffer', -- from Buffer
+      'hrsh7th/cmp-path', -- from file path
+      'hrsh7th/cmp-cmdline', -- Complete command line
+      'hrsh7th/cmp-vsnip', -- from snippet
+      'hrsh7th/vim-vsnip', -- from snippet
       'hrsh7th/cmp-nvim-lsp-document-symbol', -- from document symbol
-      'hrsh7th/cmp-nvim-lsp-signature-help',  -- from signatures
+      'hrsh7th/cmp-nvim-lsp-signature-help', -- from signatures
     },
     config = function()
       require 'SuperYuro.config.completions'
