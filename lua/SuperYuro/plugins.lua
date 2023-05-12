@@ -26,7 +26,7 @@ return require('packer').startup(function(use)
     'Mofiqul/dracula.nvim',
     config = function()
       require('dracula').setup {
-        show_end_of_buffer = true,
+        show_end_of_buffer = false,
         transparent_bg = false,
         italic_comment = true,
       }
