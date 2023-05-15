@@ -46,17 +46,6 @@ return require('packer').startup(function(use)
     end,
   }
 
-  -- File tree
-  use {
-    'nvim-tree/nvim-tree.lua',
-    requires = {
-      'nvim-tree/nvim-web-devicons',
-    },
-    config = function()
-      require 'SuperYuro.config.nvim-tree'
-    end,
-  }
-
   -- Notify daemon
   use {
     'folke/noice.nvim',
@@ -101,6 +90,15 @@ return require('packer').startup(function(use)
     end,
   }
 
+  -- File tree
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = 'nvim-tree/nvim-web-devicons',
+    config = function()
+      require 'SuperYuro.config.nvim-tree'
+    end,
+  }
+
   -- Fold lines
 
   -- Fuzzy finder
@@ -108,7 +106,6 @@ return require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim',
     requires = {
       'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope-file-browser.nvim', -- File browser
       'chip/telescope-software-licenses.nvim', -- Search Software License
       'xiyaowong/telescope-emoji.nvim', -- Search emoji
       'fcying/telescope-ctags-outline.nvim', -- Get outline
