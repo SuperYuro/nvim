@@ -162,12 +162,26 @@ return require('packer').startup(function(use)
           diagnostics = 'nvim_lsp',
           diagnostics_update_in_insert = true,
           color_icons = true,
-          -- show_buffer_icons = true,
-          -- show_buffer_close_icons = true,
+          show_buffer_icons = true,
+          show_buffer_close_icons = true,
           show_close_icon = true,
           show_tab_indicators = false,
           separator_style = 'slant',
           always_show_bufferline = true,
+          offsets = {
+            {
+              filetype = 'packer',
+              text = 'Packer.nvim',
+              text_align = 'center',
+              separator = true,
+            },
+            {
+              filetype = 'NvimTree',
+              text = 'NvimTree',
+              text_align = 'center',
+              separator = true,
+            },
+          },
         },
       }
       vim.keymap.set('n', '<TAB>', ':BufferLineCycleNext<CR>', { silent = true })
@@ -208,6 +222,9 @@ return require('packer').startup(function(use)
   -- LSP UI
   use {
     'glepnir/lspsaga.nvim',
+    requires = {
+      'nvim-tree/nvim-web-devicons',
+    },
     -- opt = true,
     branch = 'main',
     -- event = "LspAttach",
