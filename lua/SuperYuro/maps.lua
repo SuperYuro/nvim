@@ -3,6 +3,10 @@ local silents = { silent = true }
 
 vim.g.mapleader = ' '
 
+-- Increment/Decrement
+vim.keymap.set('n', '+', '<C-a>', opts)
+vim.keymap.set('n', '-', '<C-x>', opts)
+
 -- cursor manipulation like Emacs
 vim.keymap.set('i', '<C-f>', '<Right>', silents)
 vim.keymap.set('i', '<C-b>', '<Left>', silents)
@@ -24,6 +28,9 @@ vim.keymap.set('n', 'sh', '<C-w>h', opts)
 vim.keymap.set('n', 'sj', '<C-w>j', opts)
 vim.keymap.set('n', 'sk', '<C-w>k', opts)
 vim.keymap.set('n', 'sl', '<C-w>l', opts)
+
+-- Tab
+vim.keymap.set('n', '<C-t>', ':tabedit<space>')
 
 -- Redo with shift+u
 vim.keymap.set('n', 'U', '<C-r>', opts)
