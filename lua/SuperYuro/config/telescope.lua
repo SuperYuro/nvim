@@ -4,7 +4,8 @@ local telescope = require 'telescope'
 telescope.setup {
   defaults = {
     mappings = {
-      i = {
+      n = {
+        ['q'] = actions.close,
         ['<ESC>'] = actions.close,
       },
     },
@@ -26,15 +27,6 @@ telescope.setup {
         vim.api.nvim_put({ emoji.value }, 'c', false, true)
       end,
     },
-    file_browser = {
-      hijack_netrw = true,
-      mappings = {
-        ['i'] = {
-          ['<ESC>'] = actions.close,
-          ['<C-o>'] = require('telescope').extensions.file_browser.actions.create,
-        },
-      },
-    },
   },
 }
 
@@ -42,7 +34,6 @@ telescope.load_extension 'software-licenses'
 telescope.load_extension 'emoji'
 telescope.load_extension 'ctags_outline'
 telescope.load_extension 'env'
-telescope.load_extension 'file_browser'
 
 local opts = { noremap = true, silent = true }
 vim.keymap.set('n', 'sr', ':Telescope live_grep<CR>', opts)
@@ -52,7 +43,6 @@ vim.keymap.set('n', 'sb', ':Telescope buffers<CR>', opts)
 vim.keymap.set('n', 'sd', ':Telescope diagnostics<CR>', opts)
 vim.keymap.set('n', 'se', ':Telescope env<CR>', opts)
 vim.keymap.set('n', 'st', ':Telescope ctags_outline outline<CR>', opts)
-vim.keymap.set('n', 'sf', ':Telescope file_browser path=%:p:h select_buffer=true hidden=true<CR>', opts)
 vim.keymap.set('n', 'sw', ':Telescope software-licenses find<CR>', opts)
 
 -- '<cmd>lua require("telescope").extensions.file_browser.file_browser({ path = "%:p:h", cws = telescope_buffer_dir(), respect_git_ignore = false, hidden = true, grouped = true, previewer = false, initial_mode = "normal", layout_config = { height = 40 } })<cr>',
