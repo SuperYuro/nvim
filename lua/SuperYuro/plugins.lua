@@ -23,16 +23,19 @@ return require('packer').startup(function(use)
 
   -- Colorscheme
   use {
-    'Mofiqul/dracula.nvim',
+    'shaunsingh/nord.nvim',
     config = function()
-      require('dracula').setup {
-        show_end_of_buffer = false,
-        transparent_bg = false,
-        italic_comment = true,
-      }
-      vim.cmd 'colorscheme dracula'
+      vim.g.nord_contrast = false
+      vim.g.nord_borders = false
+      vim.g.nord_disable_background = false
+      vim.g.nord_italic = true
+      vim.g.nord_uniform_diff_background = true
+      vim.g.nord_bold = false
+
+      vim.cmd 'colorscheme nord'
     end,
   }
+
   -- Jump anywhere
   use {
     'phaazon/hop.nvim',
