@@ -29,10 +29,17 @@ local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 mason_lsp.setup_handlers {
   function(server_name)
-    lspconfig[server_name].setup {
-      on_attach = on_attach,
-      capabilities = { cmp_capabilities, offsetEncoding = 'utf-8' },
-    }
+    if server_name == 'clangd' then
+      lspconfig['clangd'].setup {
+        on_attach = on_attach,
+        capabilities = { cmp_capabilities, offsetEncoding = 'utf-8' },
+      }
+    else
+      lspconfig[server_name].setup {
+        on_attach = on_attach,
+        capabilities = cmp_capabilities,
+      }
+    end
   end,
 }
 
