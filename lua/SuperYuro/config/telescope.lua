@@ -4,8 +4,7 @@ local telescope = require 'telescope'
 telescope.setup {
   defaults = {
     mappings = {
-      n = {
-        ['q'] = actions.close,
+      i = {
         ['<ESC>'] = actions.close,
       },
     },
@@ -44,5 +43,3 @@ vim.keymap.set('n', 'sd', ':Telescope diagnostics<CR>', opts)
 vim.keymap.set('n', 'se', ':Telescope env<CR>', opts)
 vim.keymap.set('n', 'st', ':Telescope ctags_outline outline<CR>', opts)
 vim.keymap.set('n', 'sw', ':Telescope software-licenses find<CR>', opts)
-
--- '<cmd>lua require("telescope").extensions.file_browser.file_browser({ path = "%:p:h", cws = telescope_buffer_dir(), respect_git_ignore = false, hidden = true, grouped = true, previewer = false, initial_mode = "normal", layout_config = { height = 40 } })<cr>',
