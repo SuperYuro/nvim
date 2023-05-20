@@ -4,6 +4,7 @@ vim.g.loaded_netrwPlugin = 1
 require 'SuperYuro.base'
 require 'SuperYuro.plugins'
 require 'SuperYuro.maps'
+require 'SuperYuro.clipboard'
 
 local has = function(x)
   return vim.fn.has(x) == 1
