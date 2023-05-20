@@ -200,6 +200,9 @@ return require('packer').startup(function(use)
     },
     config = function()
       require 'SuperYuro.config.treesitter'
+      if vim.fn.has 'win32' == 1 then
+        require 'SuperYuro.config.ts-windows'
+      end
     end,
   }
 
