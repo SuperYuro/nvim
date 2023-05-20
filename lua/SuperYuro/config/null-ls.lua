@@ -18,6 +18,8 @@ end
 null_ls.setup {
   on_attach = on_attach,
   sources = {
+    -- Bash
+    null_ls.builtins.formatting.beautysh,
     -- Lua
     null_ls.builtins.formatting.stylua,
     -- Fish
