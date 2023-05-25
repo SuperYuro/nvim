@@ -1,468 +1,321 @@
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system {
-      'git',
-      'clone',
-      '--depth',
-      '1',
-      'https://github.com/wbthomason/packer.nvim',
-      install_path,
-    }
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
-local packer_bootstrap = ensure_packer()
-
-return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
+require("lazy").setup({
+  ---- Look and feel ----
 
   -- Colorscheme
-  use {
-    'shaunsingh/nord.nvim',
+  {
+    "rebelot/kanagawa.nvim",
+    lazy = false,
+    priority = 1000,
     config = function()
-      vim.g.nord_contrast = false
-      vim.g.nord_borders = false
-      vim.g.nord_disable_background = false
-      vim.g.nord_italic = true
-      vim.g.nord_uniform_diff_background = true
-      vim.g.nord_bold = false
-
-      vim.cmd 'colorscheme nord'
+      require("kanagawa").setup({
+        undercurl = true,
+        commentStyle = { italic = true },
+        dimInactive = true,
+        terminalColors = true,
+        theme = "dragon",
+        colors = { theme = { all = { ui = { bg_gutter = "none" } } } },
+      })
+      vim.cmd([[colorscheme kanagawa]])
     end,
-  }
-
-  -- Jump anywhere
-  use {
-    'phaazon/hop.nvim',
-    branch = 'v2',
-    config = function()
-      require('hop').setup()
-      vim.keymap.set('n', '<leader><leader>', ':HopWord<CR>', { silent = true, noremap = true })
-    end,
-  }
-
-  -- Notify daemon
-  use {
-    'folke/noice.nvim',
-    requires = {
-      'MunifTanjim/nui.nvim',
-      'rcarriga/nvim-notify',
-    },
-    config = function()
-      require 'SuperYuro.config.noice'
-    end,
-  }
-
-  -- Sho lsp progress
-  use {
-    'j-hui/fidget.nvim',
-    config = function()
-      require('fidget').setup()
-    end,
-  }
-
-  -- Show next key
-  use {
-    'folke/which-key.nvim',
-    config = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 300
-      require('which-key').setup {}
-    end,
-  }
-
-  -- Show scrollbar
-  use {
-    'petertriho/nvim-scrollbar',
-    requires = {
-      'lewis6991/gitsigns.nvim',
-      'kevinhwang91/nvim-hlslens',
-    },
-    config = function()
-      require('hlslens').setup()
-      require('gitsigns').setup()
-      require('scrollbar').setup()
-    end,
-  }
-
-  -- File tree
-  use {
-    'nvim-tree/nvim-tree.lua',
-    requires = 'nvim-tree/nvim-web-devicons',
-    config = function()
-      require 'SuperYuro.config.nvim-tree'
-    end,
-  }
-
-  -- Fold lines
-
-  -- Fuzzy finder
-  use {
-    'nvim-telescope/telescope.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim',
-      'chip/telescope-software-licenses.nvim', -- Search Software License
-      'xiyaowong/telescope-emoji.nvim', -- Search emoji
-      'fcying/telescope-ctags-outline.nvim', -- Get outline
-      'LinArcX/telescope-env.nvim', -- Show environment variables
-    },
-    config = function()
-      require 'SuperYuro.config.telescope'
-    end,
-  }
+  },
 
   -- Statusline
-  use {
-    'nvim-lualine/lualine.nvim',
+  {
+    "nvim-lualine/lualine.nvim",
     config = function()
-      require('lualine').setup {
+      require("lualine").setup({
         options = {
-          theme = 'auto',
+          theme = "auto",
         },
         sections = {
-          lualine_a = { 'mode' },
-          lualine_b = { 'branch' },
+          lualine_a = { "mode" },
+          lualine_b = { "branch" },
           lualine_c = {
             {
-              'filename',
+              "filename",
               file_status = true,
               newfile_status = true,
               path = 1,
             },
           },
-          lualine_x = { 'fileformat', 'filetype' },
-          lualine_y = { 'diagnostics', 'diff' },
-          lualine_z = { 'progress', 'location' },
+          lualine_x = { "fileformat", "filetype" },
+          lualine_y = { "diagnostics", "diff" },
+          lualine_z = { "progress", "location" },
         },
-      }
-    end,
-  }
-
-  -- Tabbar
-  use {
-    'akinsho/bufferline.nvim',
-    config = function()
-      local bufferline = require 'bufferline'
-      bufferline.setup {
-        options = {
-          mode = 'tabs',
-          themable = true,
-          numbers = 'buffer_id',
-          close_command = 'bdelete! %d',
-          buffer_close_icon = '󰅖',
-          modified_icon = '●',
-          close_icon = '',
-          left_trunc_marker = '',
-          right_trunc_marker = '',
-          diagnostics = 'nvim_lsp',
-          diagnostics_update_in_insert = true,
-          color_icons = true,
-          show_buffer_icons = true,
-          show_buffer_close_icons = true,
-          show_close_icon = true,
-          show_tab_indicators = false,
-          separator_style = 'slant',
-          always_show_bufferline = true,
-          offsets = {
+        inactive_sections = {
+          lualine_c = { "filename" },
+        },
+        tabline = {
+          lualine_a = {
             {
-              filetype = 'packer',
-              text = 'Packer.nvim',
-              text_align = 'center',
-              separator = true,
-            },
-            {
-              filetype = 'NvimTree',
-              text = 'NvimTree',
-              text_align = 'center',
-              separator = true,
+              "tabs",
+              mode = 1,
+              use_mode_colors = false,
+              tabs_color = {
+                active = "lualine_a_normal",
+                inactive = "lualine_a_inactive",
+              },
             },
           },
         },
-      }
-      vim.keymap.set('n', '<TAB>', ':BufferLineCycleNext<CR>', { silent = true })
-      vim.keymap.set('n', '<S-TAB>', ':BufferLineCyclePrev<CR>', { silent = true })
+      })
     end,
-  }
+  },
 
-  -- Syntax Highlighting
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
-    requires = {
-      'windwp/nvim-ts-autotag', -- Pair HTML tags automatically
-      'mrjones2014/nvim-ts-rainbow', -- Rainbow brackets
-      'RRethy/nvim-treesitter-endwise', -- Complete end automatically
+  -- Syntax highlighting
+  {
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+    dependencies = {
+      "windwp/nvim-ts-autotag",
+      "mrjones2014/nvim-ts-rainbow",
+      "RRethy/nvim-treesitter-endwise",
     },
     config = function()
-      require 'SuperYuro.config.treesitter'
-      if vim.fn.has 'win32' == 1 then
-        require 'SuperYuro.config.ts-windows'
-      end
-    end,
-  }
-
-  -- LSP
-  use {
-    'neovim/nvim-lspconfig',
-    requires = {
-      {
-        'williamboman/mason.nvim',
-        run = ':MasonUpdate',
-      },
-      { 'williamboman/mason-lspconfig.nvim' },
-      { 'hrsh7th/cmp-nvim-lsp' },
-    },
-    config = function()
-      require 'SuperYuro.config.nvim-lspconfig'
-    end,
-  }
-
-  -- LSP UI
-  use {
-    'glepnir/lspsaga.nvim',
-    requires = {
-      'nvim-tree/nvim-web-devicons',
-    },
-    -- opt = true,
-    branch = 'main',
-    -- event = "LspAttach",
-    config = function()
-      require 'SuperYuro.config.lspsaga'
-    end,
-  }
-
-  -- Diagnostics
-  use {
-    'folke/trouble.nvim',
-    config = function()
-      require('trouble').setup {
-        position = 'right', -- position of the list can be: bottom, top, left, right
-        height = 10, -- height of the trouble list when position is top or bottom
-        width = 50, -- width of the list when position is left or right
-        icons = true, -- use devicons for filenames
-        mode = 'workspace_diagnostics', -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
-        fold_open = '', -- icon used for open folds
-        fold_closed = '', -- icon used for closed folds
-        group = true, -- group results by file
-        padding = true, -- add an extra new line on top of the list
-        action_keys = {
-          -- key mappings for actions in the trouble list
-          -- map to {} to remove a mapping, for example:
-          -- close = {},
-          close = 'q', -- close the list
-          cancel = '<esc>', -- cancel the preview and get back to your last window / buffer / cursor
-          refresh = 'r', -- manually refresh
-          jump = { '<cr>', '<tab>' }, -- jump to the diagnostic or open / close folds
-          open_split = { '<c-x>' }, -- open buffer in new split
-          open_vsplit = { '<c-v>' }, -- open buffer in new vsplit
-          open_tab = { '<c-t>' }, -- open buffer in new tab
-          jump_close = { 'o' }, -- jump to the diagnostic and close the list
-          toggle_mode = 'm', -- toggle between "workspace" and "document" diagnostics mode
-          toggle_preview = 'P', -- toggle auto_preview
-          hover = 'K', -- opens a small popup with the full multiline message
-          preview = 'p', -- preview the diagnostic location
-          close_folds = { 'zM', 'zm' }, -- close all folds
-          open_folds = { 'zR', 'zr' }, -- open all folds
-          toggle_fold = { 'zA', 'za' }, -- toggle fold of current file
-          previous = 'k', -- previous item
-          next = 'j', -- next item
-        },
-        indent_lines = true, -- add an indent guide below the fold icons
-        auto_open = false, -- automatically open the list when you have diagnostics
-        auto_close = false, -- automatically close the list when you have no diagnostics
-        auto_preview = true, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
-        auto_fold = false, -- automatically fold a file trouble list at creation
-        auto_jump = { 'lsp_definitions' }, -- for the given modes, automatically jump if there is only a single result
-        signs = {
-          -- icons / text used for a diagnostic
-          error = '',
-          warning = '',
-          hint = '',
-          information = '',
-          other = '﫠',
-        },
-        use_diagnostic_signs = true, -- enabling this will use the signs defined in your lsp client
-      }
-      vim.keymap.set('n', 'dl', ':TroubleToggle<CR>')
-    end,
-  }
-
-  -- Debag adapter protocol
-  use {
-    'mfussenegger/nvim-dap',
-    requires = {
-      'rcarriga/nvim-dap-ui',
-    },
-    config = function()
-      require 'SuperYuro.config.nvim-dap'
-    end,
-  }
-
-  -- Format and Lint
-  use {
-    'jose-elias-alvarez/null-ls.nvim',
-    requires = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      require 'SuperYuro.config.null-ls'
-    end,
-  }
-
-  -- Completion
-  use {
-    'hrsh7th/nvim-cmp',
-    requires = {
-      'onsails/lspkind.nvim', -- Icons
-      'hrsh7th/cmp-nvim-lsp', -- from LSP
-      'hrsh7th/cmp-buffer', -- from Buffer
-      'hrsh7th/cmp-path', -- from file path
-      'hrsh7th/cmp-cmdline', -- Complete command line
-      'hrsh7th/cmp-vsnip', -- from snippet
-      'hrsh7th/vim-vsnip', -- from snippet
-      'hrsh7th/cmp-nvim-lsp-document-symbol', -- from document symbol
-      'hrsh7th/cmp-nvim-lsp-signature-help', -- from signatures
-    },
-    config = function()
-      require 'SuperYuro.config.completions'
-    end,
-  }
-
-  -- Git
-  use {
-    'ttbug/tig.nvim',
-    config = function()
-      require('tig').setup {
-        -- Command Options
-        command = {
-          -- Enable :Tigui command
-          -- @type: bool
+      require("nvim-treesitter.configs").setup({
+        autotag = {
           enable = true,
         },
-        -- Path to binary
-        -- @type: string
-        binary = 'tig',
-        -- Argumens to tig
-        -- @type: table of string
-        args = {},
-        -- WIndow Options
-        window = {
-          options = {
-            -- Width window in %
-            -- @type: number
-            width = 90,
-            -- Height window in %
-            -- @type: number
-            height = 80,
-            -- Border Style
-            -- Enum: "none", "single", "rounded", "solid" or "shadow"
-            -- @type: string
-            border = 'rounded',
-          },
+        rainbow = {
+          enable = true,
+          extended_mode = true,
+          max_file_lines = nil,
         },
-      }
-      vim.keymap.set('n', 'tig', ':Tigui<CR>', { silent = true })
+        endwise = {
+          enable = true,
+        },
+      })
+      require("nvim-ts-autotag").setup()
+      if vim.fn.has("win32") == 1 then
+        local tsintall = require("nvim-treesitter.install")
+        tsintall.prefer_git = false
+        tsintall.compilers = { "clang", "gcc" }
+      end
     end,
-  }
+  },
 
-  -- Color preview
-  use {
-    'NvChad/nvim-colorizer.lua',
-    config = function()
-      require('colorizer').setup {
-        RGB = true,
-        RRGGBB = true,
-        RRGGBBAA = false,
-        AARRGGBB = false,
-        names = false,
+  -- Git status
+  {
+    "lewis6991/gitsigns.nvim",
+    config = true,
+  },
 
-        rgb_fn = false,
-        hsl_fn = false,
-        css = false,
-        css_fn = false,
+  {
+    "kevinhwang91/nvim-hlslens",
+    config = true,
+  },
 
-        tailwind = true,
-
-        mode = 'background',
-      }
-    end,
-  }
+  -- Scrollbar
+  {
+    "petertriho/nvim-scrollbar",
+    dependencies = {
+      "lewis6991/gitsigns.nvim",
+      "kevinhwang91/nvim-hlslens",
+    },
+    config = true,
+  },
 
   -- Highlight same words
-  use {
-    'RRethy/vim-illuminate',
+  {
+    "RRethy/vim-illuminate",
     config = function()
-      require 'SuperYuro.config.illuminate'
+      require("SuperYuro.config.illuminate")
     end,
-  }
+  },
 
   -- Show indent line
-  use {
-    'lukas-reineke/indent-blankline.nvim',
+  {
+    "lukas-reineke/indent-blankline.nvim",
     config = function()
-      require('indent_blankline').setup {
+      require("indent_blankline").setup({
         show_current_context = true,
         show_current_context_start = true,
-      }
+      })
     end,
-  }
+  },
 
-  -- Create missing directories when saving files
-  use {
-    'jghauser/mkdir.nvim',
-  }
-
-  -- Surround
-  use {
-    'kylechui/nvim-surround',
-    tag = '*',
+  -- File tree
+  {
+    "nvim-tree/nvim-tree.lua",
     config = function()
-      require('nvim-surround').setup {}
+      require("SuperYuro.config.nvim-tree")
     end,
-  }
+  },
 
-  -- Pair brackets automatically
-  use {
-    'windwp/nvim-autopairs',
-    event = 'InsertEnter',
-    config = function()
-      require('nvim-autopairs').setup {
-        disable_filetype = { 'TelescopePrompt', 'vim' },
-      }
-    end,
-  }
-
-  -- Comment
-  use {
-    'numToStr/Comment.nvim',
-    config = function()
-      require('Comment').setup()
-    end,
-  }
-
-  -- Interactive interface for json
-  use {
-    'gennaro-tedesco/nvim-jqx',
-    ft = { 'json', 'yaml' },
-  }
-
-  -- Auto pandoc
-  use {
-    'jghauser/auto-pandoc.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim',
+  -- Fuzzy finder
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "chip/telescope-software-licenses.nvim", -- Search Software License
+      "xiyaowong/telescope-emoji.nvim", -- Search emoji
+      "fcying/telescope-ctags-outline.nvim", -- Get outline
+      "LinArcX/telescope-env.nvim", -- Show environment variables
     },
     config = function()
-      require 'auto-pandoc'
+      require("SuperYuro.config.telescope")
     end,
-  }
+  },
 
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end)
+  ---- LSP support ----
+
+  -- LSP
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      { "williamboman/mason.nvim", run = ":MasonUpdate" },
+      "williamboman/mason-lspconfig.nvim",
+    },
+    config = function()
+      require("SuperYuro.config.nvim-lspconfig")
+    end,
+  },
+
+  -- Rich LSP ui
+  {
+    "glepnir/lspsaga.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    event = "LspAttach",
+    branch = "main",
+    config = function()
+      require("SuperYuro.config.lspsaga")
+    end,
+  },
+
+  -- Lsp Diagnostics'
+  {
+    "folke/trouble.nvim",
+    event = "LspAttach",
+    confug = function()
+      require("SuperYuro.config.trouble")
+    end,
+  },
+
+  -- Show progress of LSP analysis
+  {
+    "j-hui/fidget.nvim",
+    config = true,
+  },
+
+  -- Format and Lint
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "jay-babu/mason-null-ls.nvim",
+    },
+    config = function()
+      require("SuperYuro.config.null-ls")
+    end,
+  },
+
+  -- Debugging
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+      "rcarriga/nvim-dap-ui",
+      "jay-babu/mason-nvim-dap.nvim",
+    },
+    config = function()
+      require("SuperYuro.config.nvim-dap")
+    end,
+  },
+
+  ---- Language support ----
+
+  ---- Editing support ----
+  -- Auto completion
+  {
+    "hrsh7th/nvim-cmp",
+    event = { "InsertEnter", "CmdLineEnter" },
+    dependencies = {
+      "onsails/lspkind.nvim", -- Icons
+      "hrsh7th/cmp-nvim-lsp", -- from LSP
+      "hrsh7th/cmp-buffer", -- from Buffer
+      "hrsh7th/cmp-path", -- from file path
+      "hrsh7th/cmp-cmdline", -- Complete command line
+      "hrsh7th/cmp-vsnip", -- from snippet
+      "hrsh7th/vim-vsnip", -- from snippet
+      "hrsh7th/cmp-nvim-lsp-document-symbol", -- from document symbol
+      "hrsh7th/cmp-nvim-lsp-signature-help", -- from signatures
+    },
+    config = function()
+      require("SuperYuro.config.completions")
+    end,
+  },
+
+  -- Toggle comment
+  {
+    "numToStr/Comment.nvim",
+    config = true,
+  },
+
+  -- Close brackets
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = function()
+      require("nvim-autopairs").setup({
+        disable_filetype = { "TelescopePrompt", "vim" },
+      })
+    end,
+  },
+
+  -- Surround brackets
+  {
+    "kylechui/nvim-surround",
+    config = true,
+  },
+
+  -- Jump anywhere
+  {
+    "phaazon/hop.nvim",
+    branch = "v2",
+    keys = { { "<Space>", mode = "n" } },
+    config = function()
+      require("hop").setup()
+      vim.keymap.set("n", "<Space><Space>", ":HopWord<CR>", { silent = true, noremap = true })
+    end,
+  },
+
+  ---- Other utilities
+  -- Git integration
+  {
+    "tpope/vim-fugitive",
+    keys = { { "g", mode = "n" } },
+    config = function()
+      vim.keymap.set("n", "g<space>", ":Git ")
+    end,
+  },
+
+  -- Git blame in buffer
+  {
+    "f-person/git-blame.nvim",
+    config = function()
+      vim.g.gitblame_enabled = 1
+      vim.g.gitblame_message_template = "<summary> by <author> (<date>)"
+      vim.g.gitblame_message_when_not_committed = ""
+      vim.g.gitblame_date_format = "%r"
+    end,
+  },
+
+  -- Git conflict editor
+  {
+    "akinsho/git-conflict.nvim",
+    version = "*",
+    config = true,
+  },
+})

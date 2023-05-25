@@ -1,4 +1,14 @@
 local dap = require 'dap'
+local mason_dap = require 'mason-nvim-dap'
+
+mason_dap.setup {
+  ensure_installed = {
+    'js-debug-adapter',
+    'debugpy',
+    'bash-debug-adapter',
+    'codelldb',
+  },
+}
 
 -- C/C++/Rust by codelldb
 dap.adapters.codelldb = {
