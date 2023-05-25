@@ -1,7 +1,7 @@
 local opts = { silent = true, noremap = true }
 local silents = { silent = true }
 
-vim.g.mapleader = ' '
+vim.g.mapleader = '<Space>'
 
 -- Increment/Decrement
 vim.keymap.set('n', '+', '<C-a>', opts)
@@ -31,6 +31,8 @@ vim.keymap.set('n', 'sl', '<C-w>l', opts)
 
 -- Tab
 vim.keymap.set('n', '<C-t>', ':tabedit<space>')
+vim.keymap.set("n", "<Tab>", "gt")
+vim.keymap.set("n", "<S-Tab>", "gT")
 
 -- Redo with shift+u
 vim.keymap.set('n', 'U', '<C-r>', opts)
