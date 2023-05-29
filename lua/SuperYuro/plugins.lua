@@ -23,6 +23,7 @@ require("lazy").setup({
       require("kanagawa").setup({
         undercurl = true,
         commentStyle = { italic = true },
+        transparent = true,
         dimInactive = true,
         terminalColors = true,
         theme = "dragon",
@@ -235,6 +236,23 @@ require("lazy").setup({
   },
 
   ---- Language support ----
+  -- Neovim Lua
+  {
+    "folke/neodev.nvim",
+    opts = {},
+    config = function()
+      require("neodev").setup()
+      require("lspconfig").lua_ls.setup({
+        settings = {
+          Lua = {
+            completion = {
+              callSnippet = "Replace",
+            },
+          },
+        },
+      })
+    end,
+  },
 
   ---- Editing support ----
   -- Auto completion
@@ -317,5 +335,14 @@ require("lazy").setup({
     "akinsho/git-conflict.nvim",
     version = "*",
     config = true,
+  },
+
+  -- Original plugin
+  {
+    "SuperYuro/django-runner.nvim",
+    branch = "feature/show-message",
+    config = function()
+      require("django-runner").setup()
+    end,
   },
 })
