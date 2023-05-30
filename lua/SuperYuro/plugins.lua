@@ -16,20 +16,16 @@ require("lazy").setup({
 
   -- Colorscheme
   {
-    "rebelot/kanagawa.nvim",
+    "Mofiqul/dracula.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      require("kanagawa").setup({
-        undercurl = true,
-        commentStyle = { italic = true },
-        transparent = true,
-        dimInactive = true,
-        terminalColors = true,
-        theme = "dragon",
-        colors = { theme = { all = { ui = { bg_gutter = "none" } } } },
+      require("dracula").setup({
+        show_end_of_buffer = true,
+        italic_comment = true,
+        transparent_bg = true,
       })
-      vim.cmd([[colorscheme kanagawa]])
+      vim.cmd([[colorscheme dracula]])
     end,
   },
 
