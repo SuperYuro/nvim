@@ -16,16 +16,17 @@ require("lazy").setup({
 
   -- Colorscheme
   {
-    "Mofiqul/dracula.nvim",
+    "shaunsingh/nord.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      require("dracula").setup({
-        show_end_of_buffer = true,
-        italic_comment = true,
-        transparent_bg = true,
-      })
-      vim.cmd([[colorscheme dracula]])
+      vim.g.nord_contrast = true
+      vim.g.nord_borders = false
+      vim.g.disable_background = false
+      vim.g.nord_italic = true
+      vim.g.nord_uniform_diff_background = true
+      vim.g.nord_bold = true
+      vim.cmd([[colorscheme nord]])
     end,
   },
 
@@ -55,16 +56,35 @@ require("lazy").setup({
         inactive_sections = {
           lualine_c = { "filename" },
         },
-        tabline = {
-          lualine_a = {
+      })
+    end,
+  },
+
+  -- Tab bar
+  {
+    "akinsho/bufferline.nvim",
+    version = "*",
+    dependencies = "nvim-tree/nvim-web-devicons",
+    config = function()
+      vim.opt.termguicolors = true
+      require("bufferline").setup({
+        options = {
+          mode = "tabs",
+          themable = true,
+          numbers = "none",
+          close_command = "bdelete! %d",
+          right_mouse_command = "bdelete! %d",
+          left_mouse_command = "bdelete! %d",
+          diagnostics = "nvim_lsp",
+          show_duplicate_prefix = false,
+          separator_style = "slope",
+          always_show_bufferline = true,
+          offsets = {
             {
-              "tabs",
-              mode = 1,
-              use_mode_colors = false,
-              tabs_color = {
-                active = "lualine_a_normal",
-                inactive = "lualine_a_inactive",
-              },
+              filetype = "NvimTree",
+              text = "File Explorer",
+              text_align = "center",
+              separator = true,
             },
           },
         },
@@ -334,11 +354,4 @@ require("lazy").setup({
   },
 
   -- Original plugin
-  {
-    "SuperYuro/django-runner.nvim",
-    branch = "feature/show-message",
-    config = function()
-      require("django-runner").setup()
-    end,
-  },
 })
