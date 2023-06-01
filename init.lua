@@ -20,9 +20,11 @@ end
 
 if is_linux then
   vim.opt.shell = "zsh"
+  vim.opt.fileformats = "unix,dos"
 end
 
 if is_win then
   vim.opt.shell = "pwsh"
   vim.opt.clipboard:prepend({ "unnamed", "unnamedplus" })
+  vim.opt.fileformats = "dos,unix"
 end
