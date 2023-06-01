@@ -19,7 +19,7 @@ if is_mac then
 end
 
 if is_linux then
-  vim.opt.shell = "fish"
+  vim.opt.shell = "zsh"
 end
 
 if is_win then
