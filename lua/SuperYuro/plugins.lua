@@ -21,7 +21,7 @@ require("lazy").setup({
     priority = 1000,
     config = function()
       vim.g.nord_contrast = true
-      vim.g.nord_borders = false
+      vim.g.nord_borders = true
       vim.g.disable_background = false
       vim.g.nord_italic = true
       vim.g.nord_uniform_diff_background = true
@@ -103,6 +103,10 @@ require("lazy").setup({
     },
     config = function()
       require("nvim-treesitter.configs").setup({
+        ensure_installed = {
+          "lua",
+          "python",
+        },
         autotag = {
           enable = true,
         },
@@ -133,6 +137,34 @@ require("lazy").setup({
   {
     "kevinhwang91/nvim-hlslens",
     config = true,
+  },
+
+  -- Notification
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+    config = function()
+      require("noice").setup({
+        lsp = {
+          override = {
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+            ["vim.lsp.util.stylize_markdown"] = true,
+            ["cmp.entry.get_documentation"] = true,
+          },
+        },
+        presets = {
+          bottom_search = true,
+          command_palette = true,
+          long_message_to_split = true,
+          inc_rename = false,
+          lsp_doc_border = false,
+        },
+      })
+    end,
   },
 
   -- Scrollbar
