@@ -5,7 +5,6 @@ local mason_lsp = require("mason-lspconfig")
 mason.setup()
 mason_lsp.setup({
   ensure_installed = {
-    "clangd",
     "jdtls",
     "rust_analyzer",
     "lua_ls",
@@ -25,22 +24,18 @@ mason_lsp.setup({
 --   end
 -- end
 
--- local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+local cmp_capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+lspconfig.clangd.setup({
+  capabilities = { cmp_capabilities, offsetEncoding = "utf-8" },
+})
 
 mason_lsp.setup_handlers({
   function(server_name)
-    if server_name == "clangd" then
-      lspconfig["clangd"].setup({
-        -- on_attach = on_attach,
-        capabilities = { cmp_capabilities, offsetEncoding = "utf-8" },
-        -- capabilities = { offsetEncoding = "utf-8" },
-      })
-    else
-      lspconfig[server_name].setup({
-        -- on_attach = on_attach,
-        capabilities = cmp_capabilities,
-      })
-    end
+    lspconfig[server_name].setup({
+      -- on_attach = on_attach,
+      capabilities = cmp_capabilities,
+    })
   end,
 })
 
