@@ -104,8 +104,22 @@ require("lazy").setup({
     config = function()
       require("nvim-treesitter.configs").setup({
         ensure_installed = {
+          "c",
+          "cpp",
+          "vim",
+          "vimdoc",
           "lua",
           "python",
+          "html",
+          "css",
+          "javascript",
+          "typescript",
+          "tsx",
+          "json",
+          "toml",
+          "yaml",
+          "markdown",
+          "markdown_inline",
         },
         autotag = {
           enable = true,
