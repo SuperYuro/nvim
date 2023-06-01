@@ -77,7 +77,7 @@ require("lazy").setup({
           left_mouse_command = "bdelete! %d",
           diagnostics = "nvim_lsp",
           show_duplicate_prefix = false,
-          separator_style = "slope",
+          separator_style = "slant",
           always_show_bufferline = true,
           offsets = {
             {
