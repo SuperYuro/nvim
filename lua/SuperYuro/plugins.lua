@@ -16,17 +16,29 @@ require("lazy").setup({
 
   -- Colorscheme
   {
-    "shaunsingh/nord.nvim",
+    "EdenEast/nightfox.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      vim.g.nord_contrast = true
-      vim.g.nord_borders = true
-      vim.g.disable_background = false
-      vim.g.nord_italic = true
-      vim.g.nord_uniform_diff_background = true
-      vim.g.nord_bold = true
-      vim.cmd([[colorscheme nord]])
+      require("nightfox").setup({
+        transparent = false,
+        terminal_colors = true,
+        dim_inactive = true,
+        module_default = true,
+        colorblind = {
+          enable = false,
+        },
+        styles = {
+          comments = "italic",
+          keywords = "bold",
+        },
+        inverse = {
+          match_paren = true,
+          visual = true,
+          search = true,
+        },
+      })
+      vim.cmd([[colorscheme nordfox]])
     end,
   },
 
@@ -98,7 +110,6 @@ require("lazy").setup({
     run = ":TSUpdate",
     dependencies = {
       "windwp/nvim-ts-autotag",
-      "mrjones2014/nvim-ts-rainbow",
       "RRethy/nvim-treesitter-endwise",
     },
     config = function()
@@ -127,11 +138,6 @@ require("lazy").setup({
         },
         autotag = {
           enable = true,
-        },
-        rainbow = {
-          enable = true,
-          extended_mode = true,
-          max_file_lines = nil,
         },
         endwise = {
           enable = true,
@@ -368,7 +374,7 @@ require("lazy").setup({
   {
     "phaazon/hop.nvim",
     branch = "v2",
-    keys = { { "<Space>", mode = "n" } },
+    keys = { { "<Space><Space>", mode = "n" } },
     config = function()
       require("hop").setup()
       vim.keymap.set("n", "<Space><Space>", ":HopWord<CR>", { silent = true, noremap = true })
