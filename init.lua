@@ -14,10 +14,6 @@ local is_mac = has("mac")
 local is_win = has("win32")
 local is_linux = has("linux")
 
-if is_mac then
-  vim.opt.clipboard:append({ "unnamedplus" })
-end
-
 if is_linux then
   vim.opt.shell = "fish"
   vim.opt.fileformats = "unix,dos"
