@@ -33,7 +33,6 @@ lspconfig.clangd.setup({
 mason_lsp.setup_handlers({
   function(server_name)
     lspconfig[server_name].setup({
-      -- on_attach = on_attach,
       capabilities = cmp_capabilities,
     })
   end,
