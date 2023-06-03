@@ -12,7 +12,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  ---- Look and feel ----
+  ----------------------------------------------------------------------
+  --                          Look and feel                           --
+  ----------------------------------------------------------------------
 
   -- Colorscheme
   {
@@ -30,7 +32,7 @@ require("lazy").setup({
         },
         styles = {
           comments = "italic",
-          keywords = "bold",
+          -- keywords = "bold",
         },
         inverse = {
           match_paren = true,
@@ -111,6 +113,13 @@ require("lazy").setup({
     dependencies = {
       "windwp/nvim-ts-autotag",
       "RRethy/nvim-treesitter-endwise",
+      "yioneko/nvim-yati",
+      "nvim-treesitter/nvim-treesitter-context",
+      "JoosepAlviste/nvim-ts-context-commentstring",
+      "haringsrob/nvim_context_vt",
+      "nvim-treesitter/nvim-tree-docs",
+      "s1n7ax/nvim-comment-frame",
+      "stevearc/aerial.nvim", -- Generate outline
     },
     config = function()
       require("nvim-treesitter.configs").setup({
@@ -136,14 +145,27 @@ require("lazy").setup({
           "gitignore",
           "git_config",
         },
-        autotag = {
-          enable = true,
-        },
-        endwise = {
-          enable = true,
-        },
+        autotag = { enable = true },
+        endwise = { enable = true },
+        yati = { enable = true },
+        indent = { enable = false },
+        context_commentstring = { enable = true },
+        tree_docs = { enable = true },
       })
       require("nvim-ts-autotag").setup()
+      require("treesitter-context").setup({
+        enable = false,
+        max_linex = 0,
+        min_window_height = 0,
+        line_numbers = false,
+        mode = "cursor",
+      })
+      -- require("nvim_context_vt").setup({ enabled = true })
+      require("nvim-comment-frame").setup({
+        keymap = "<Space>cc",
+        multiline_keymap = "<Space>cm",
+      })
+      require("aerial").setup()
       if vim.fn.has("win32") == 1 then
         local tsintall = require("nvim-treesitter.install")
         tsintall.prefer_git = false
@@ -209,6 +231,12 @@ require("lazy").setup({
     end,
   },
 
+  -- Highlight arguments
+  {
+    "m-demare/hlargs.nvim",
+    config = true,
+  },
+
   -- Show indent line
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -233,9 +261,9 @@ require("lazy").setup({
     "nvim-telescope/telescope.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
+      { "nvim-telescope/telescope-frecency.nvim", dependencies = { "kkharji/sqlite.lua" } },
       "chip/telescope-software-licenses.nvim", -- Search Software License
       "xiyaowong/telescope-emoji.nvim", -- Search emoji
-      "fcying/telescope-ctags-outline.nvim", -- Get outline
       "LinArcX/telescope-env.nvim", -- Show environment variables
     },
     config = function()
@@ -243,7 +271,19 @@ require("lazy").setup({
     end,
   },
 
-  ---- LSP support ----
+  -- Show next key
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end,
+  },
+
+  ----------------------------------------------------------------------
+  --                           LSP Support                            --
+  ----------------------------------------------------------------------
 
   -- LSP
   {
@@ -278,10 +318,7 @@ require("lazy").setup({
   },
 
   -- Show progress of LSP analysis
-  {
-    "j-hui/fidget.nvim",
-    config = true,
-  },
+  { "j-hui/fidget.nvim", config = true },
 
   -- Format and Lint
   {
@@ -307,7 +344,10 @@ require("lazy").setup({
     end,
   },
 
-  ---- Language support ----
+  ----------------------------------------------------------------------
+  --                         Language Support                         --
+  ----------------------------------------------------------------------
+
   -- Neovim Lua
   {
     "folke/neodev.nvim",
@@ -326,7 +366,10 @@ require("lazy").setup({
     end,
   },
 
-  ---- Editing support ----
+  ----------------------------------------------------------------------
+  --                         Editing Support                          --
+  ----------------------------------------------------------------------
+
   -- Auto completion
   {
     "hrsh7th/nvim-cmp",
@@ -348,10 +391,7 @@ require("lazy").setup({
   },
 
   -- Toggle comment
-  {
-    "numToStr/Comment.nvim",
-    config = true,
-  },
+  { "numToStr/Comment.nvim", config = true },
 
   -- Close brackets
   {
@@ -365,23 +405,29 @@ require("lazy").setup({
   },
 
   -- Surround brackets
-  {
-    "kylechui/nvim-surround",
-    config = true,
-  },
+  { "kylechui/nvim-surround", config = true },
 
   -- Jump anywhere
   {
     "phaazon/hop.nvim",
     branch = "v2",
-    keys = { { "<Space><Space>", mode = "n" } },
+    keys = { { "<Space>", mode = "n" } },
     config = function()
       require("hop").setup()
       vim.keymap.set("n", "<Space><Space>", ":HopWord<CR>", { silent = true, noremap = true })
     end,
   },
 
-  ---- Other utilities
+  -- Highlight color
+  { "norcalli/nvim-colorizer.lua", config = true },
+
+  -- Configure tab width automatically
+  { "zsugabubus/crazy8.nvim" },
+
+  ----------------------------------------------------------------------
+  --                         Other Utilities                          --
+  ----------------------------------------------------------------------
+
   -- Git integration
   {
     "tpope/vim-fugitive",
@@ -395,7 +441,7 @@ require("lazy").setup({
   {
     "f-person/git-blame.nvim",
     config = function()
-      vim.g.gitblame_enabled = 1
+      vim.g.gitblame_enabled = 0
       vim.g.gitblame_message_template = "<summary> by <author> (<date>)"
       vim.g.gitblame_message_when_not_committed = ""
       vim.g.gitblame_date_format = "%r"
@@ -407,6 +453,28 @@ require("lazy").setup({
     "akinsho/git-conflict.nvim",
     version = "*",
     config = true,
+  },
+
+  -- Save current session
+  {
+    "rmagatti/auto-session",
+    config = function()
+      require("auto-session").setup({
+        log_level = error,
+        auto_session_suppress_dirs = { "~/", "~/Development", "~/Downloads" },
+      })
+    end,
+  },
+
+  -- Terminal
+  {
+    "akinsho/toggleterm.nvim",
+    version = "*",
+    config = function()
+      require("toggleterm").setup()
+      vim.keymap.set("n", "tt", ":ToggleTerm size=120 direction=vertical<CR>", { silent = true, noremap = true })
+      vim.keymap.set("n", "<C-t>", ":ToggleTerm direction=tab<CR>", { silent = true, noremap = true })
+    end,
   },
 
   -- Original plugin
