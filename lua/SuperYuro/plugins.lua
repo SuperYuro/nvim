@@ -18,29 +18,22 @@ require("lazy").setup({
 
   -- Colorscheme
   {
-    "EdenEast/nightfox.nvim",
+    "projekt0n/github-nvim-theme",
     lazy = false,
     priority = 1000,
     config = function()
-      require("nightfox").setup({
-        transparent = false,
-        terminal_colors = true,
-        dim_inactive = true,
-        module_default = true,
-        colorblind = {
-          enable = false,
-        },
-        styles = {
-          comments = "italic",
-          -- keywords = "bold",
-        },
-        inverse = {
-          match_paren = true,
-          visual = true,
-          search = true,
+      require("github-theme").setup({
+        options = {
+          hide_end_of_buffer = false,
+          hide_nc_statusline = true,
+          transparent = true,
+          dim_inactive = true,
+          styles = {
+            comment = "italic",
+          },
         },
       })
-      vim.cmd([[colorscheme nordfox]])
+      vim.cmd([[colorscheme github_light]])
     end,
   },
 
@@ -290,7 +283,7 @@ require("lazy").setup({
   },
 
   -- Show progress of LSP analysis
-  { "j-hui/fidget.nvim", config = true },
+  { "j-hui/fidget.nvim", branch = "legacy", config = true },
 
   -- Format and Lint
   {
