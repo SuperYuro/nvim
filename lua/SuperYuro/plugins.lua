@@ -215,7 +215,6 @@ require("lazy").setup({
     "nvim-telescope/telescope.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      { "nvim-telescope/telescope-frecency.nvim", dependencies = { "kkharji/sqlite.lua" } },
       "chip/telescope-software-licenses.nvim", -- Search Software License
       "xiyaowong/telescope-emoji.nvim", -- Search emoji
       "LinArcX/telescope-env.nvim", -- Show environment variables
@@ -389,16 +388,6 @@ require("lazy").setup({
       vim.g.gitblame_message_template = "<summary> by <author> (<date>)"
       vim.g.gitblame_message_when_not_committed = ""
       vim.g.gitblame_date_format = "%r"
-    end,
-  },
-  -- Terminal
-  {
-    "akinsho/toggleterm.nvim",
-    version = "*",
-    config = function()
-      require("toggleterm").setup()
-      vim.keymap.set("n", "tt", ":ToggleTerm size=120 direction=vertical<CR>", { silent = true, noremap = true })
-      vim.keymap.set("n", "<C-t>", ":ToggleTerm direction=tab<CR>", { silent = true, noremap = true })
     end,
   },
 
