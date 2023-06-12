@@ -23,7 +23,6 @@ telescope.setup({
 telescope.load_extension("software-licenses")
 telescope.load_extension("emoji")
 telescope.load_extension("env")
-telescope.load_extension("frecency")
 
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "sr", ":Telescope live_grep<CR>", opts)
@@ -34,4 +33,3 @@ vim.keymap.set("n", "sd", ":Telescope diagnostics<CR>", opts)
 vim.keymap.set("n", "se", ":Telescope env<CR>", opts)
 -- vim.keymap.set("n", "st", ":Telescope ctags_outline outline<CR>", opts)
 vim.keymap.set("n", "sw", ":Telescope software-licenses find<CR>", opts)
-vim.keymap.set("n", "sf", ":Telescope frecency<CR>", opts)
