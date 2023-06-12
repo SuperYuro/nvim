@@ -167,23 +167,12 @@ require("lazy").setup({
     end,
   },
 
-  -- Git status
-  {
-    "lewis6991/gitsigns.nvim",
-    config = true,
-  },
-
-  {
-    "kevinhwang91/nvim-hlslens",
-    config = true,
-  },
-
   -- Scrollbar
   {
     "petertriho/nvim-scrollbar",
     dependencies = {
-      "lewis6991/gitsigns.nvim",
-      "kevinhwang91/nvim-hlslens",
+      { "lewis6991/gitsigns.nvim", config = true }, -- Show git status
+      { "kevinhwang91/nvim-hlslens", config = true }, -- Highlight search results
     },
     config = true,
   },
@@ -233,16 +222,6 @@ require("lazy").setup({
     },
     config = function()
       require("SuperYuro.config.telescope")
-    end,
-  },
-
-  -- Show next key
-  {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    init = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 300
     end,
   },
 
@@ -412,25 +391,6 @@ require("lazy").setup({
       vim.g.gitblame_date_format = "%r"
     end,
   },
-
-  -- Git conflict editor
-  {
-    "akinsho/git-conflict.nvim",
-    version = "*",
-    config = true,
-  },
-
-  -- Save current session
-  {
-    "rmagatti/auto-session",
-    config = function()
-      require("auto-session").setup({
-        log_level = error,
-        auto_session_suppress_dirs = { "~/", "~/Development", "~/Downloads" },
-      })
-    end,
-  },
-
   -- Terminal
   {
     "akinsho/toggleterm.nvim",
