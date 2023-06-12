@@ -3,14 +3,11 @@ local null_ls = require("null-ls")
 
 mason_null_ls.setup({
   ensure_installed = {
-    "beautysh",
     "stylua",
     "cpplint",
     "clang-format",
     "rustfmt",
     "jq",
-    "eslint_d",
-    "prettierd",
   },
 })
 
@@ -44,8 +41,6 @@ end
 null_ls.setup({
   on_attach = on_attach,
   sources = {
-    -- Bash
-    null_ls.builtins.formatting.beautysh,
     -- Lua
     null_ls.builtins.formatting.stylua,
     -- Fish
