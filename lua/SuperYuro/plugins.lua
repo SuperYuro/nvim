@@ -109,7 +109,6 @@ require("lazy").setup({
       "yioneko/nvim-yati",
       "nvim-treesitter/nvim-treesitter-context",
       "JoosepAlviste/nvim-ts-context-commentstring",
-      "haringsrob/nvim_context_vt",
       "nvim-treesitter/nvim-tree-docs",
       "s1n7ax/nvim-comment-frame",
       "stevearc/aerial.nvim", -- Generate outline
@@ -153,7 +152,6 @@ require("lazy").setup({
         line_numbers = false,
         mode = "cursor",
       })
-      -- require("nvim_context_vt").setup({ enabled = true })
       require("nvim-comment-frame").setup({
         keymap = "<Space>cc",
         multiline_keymap = "<Space>cm",
