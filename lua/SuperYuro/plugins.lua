@@ -18,22 +18,15 @@ require("lazy").setup({
 
   -- Colorscheme
   {
-    "projekt0n/github-nvim-theme",
+    "shaunsingh/nord.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      require("github-theme").setup({
-        options = {
-          hide_end_of_buffer = false,
-          hide_nc_statusline = true,
-          transparent = true,
-          dim_inactive = true,
-          styles = {
-            comment = "italic",
-          },
-        },
-      })
-      vim.cmd([[colorscheme github_light]])
+      vim.g.nord_contrast = true
+      vim.g.nord_borders = true
+      vim.g.nord_disable_background = false
+      vim.g.nord_italic = true
+      vim.cmd([[colorscheme nord]])
     end,
   },
 
