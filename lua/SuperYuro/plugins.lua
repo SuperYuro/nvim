@@ -364,11 +364,8 @@ require("lazy").setup({
 
   -- Git integration
   {
-    "tpope/vim-fugitive",
-    keys = { { "g", mode = "n" } },
-    config = function()
-      vim.keymap.set("n", "g<space>", ":Git ")
-    end,
+    "kdheepak/lazygit.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
   },
 
   -- Git blame in buffer
