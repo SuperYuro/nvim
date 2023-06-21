@@ -18,15 +18,15 @@ require("lazy").setup({
 
   -- Colorscheme
   {
-    "shaunsingh/nord.nvim",
+    "Mofiqul/dracula.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      vim.g.nord_contrast = true
-      vim.g.nord_borders = true
-      vim.g.nord_disable_background = false
-      vim.g.nord_italic = true
-      vim.cmd([[colorscheme nord]])
+      require("dracula").setup({
+        italic_comment = true,
+        transparent_bg = false,
+      })
+      vim.cmd("colorscheme dracula")
     end,
   },
 
