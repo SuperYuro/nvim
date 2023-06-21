@@ -15,7 +15,7 @@ local is_win = has("win32")
 local is_linux = has("linux")
 
 if is_linux then
-  vim.opt.shell = "fish"
+  vim.opt.shell = "zsh"
   vim.opt.fileformats = "unix,dos"
 end
 
