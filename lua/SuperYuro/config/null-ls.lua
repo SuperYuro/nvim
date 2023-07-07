@@ -6,7 +6,7 @@ mason_null_ls.setup({
     "stylua",
     "cpplint",
     "clang-format",
-    "rustfmt",
+    -- "rustfmt",
     "jq",
   },
 })
