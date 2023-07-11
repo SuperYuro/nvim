@@ -2,8 +2,8 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 require("SuperYuro.base")
-require("SuperYuro.plugins")
 require("SuperYuro.maps")
+require("SuperYuro.plugins")
 require("SuperYuro.clipboard")
 
 local has = function(x)

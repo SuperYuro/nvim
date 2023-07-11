@@ -106,11 +106,11 @@ lspsaga.setup({
 })
 
 -- Following settings are based on nvim-lspconfig's default settings.
-vim.keymap.set("n", "<Space>e", ":Lspsaga show_line_diagnostics<CR>", opts) -- diagnostics
+vim.keymap.set("n", "<Leader>e", ":Lspsaga show_line_diagnostics<CR>", opts) -- diagnostics
 vim.keymap.set("n", "gd", ":Lspsaga goto_definition<CR>", opts) -- definition
 vim.keymap.set("n", "K", ":Lspsaga hover_doc<CR>", opts) -- hover
-vim.keymap.set("n", "<Space>D", ":Lspsaga goto_type_definition<CR>", opts) -- type_definition
-vim.keymap.set("n", "<Space>rn", ":Lspsaga rename<CR>", opts) -- rename
-vim.keymap.set("n", "<Space>ca", ":Lspsaga code_action<CR>", opts) -- code_action
-vim.keymap.set("v", "<Space>ca", ":Lspsaga range_code_action<CR>", opts) -- code_action for selected buffer
+vim.keymap.set("n", "<Leader>D", ":Lspsaga goto_type_definition<CR>", opts) -- type_definition
+vim.keymap.set("n", "<Leader>rn", ":Lspsaga rename<CR>", opts) -- rename
+vim.keymap.set("n", "<Leader>ca", ":Lspsaga code_action<CR>", opts) -- code_action
+vim.keymap.set("v", "<Leader>ca", ":Lspsaga range_code_action<CR>", opts) -- code_action for selected buffer
 vim.keymap.set("n", "gr", ":Lspsaga lsp_finder<CR>", opts) -- references

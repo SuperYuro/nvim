@@ -62,6 +62,6 @@ null_ls.setup({
   },
 })
 
-vim.keymap.set("n", "<Space>f", function()
+vim.keymap.set("n", "<Leader>f", function()
   vim.lsp.buf.format({ async = true })
 end, { silent = true, noremap = true })

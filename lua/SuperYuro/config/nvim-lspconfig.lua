@@ -41,7 +41,7 @@ mason_lsp.setup_handlers({
 -- Global mappings.
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
-vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
@@ -55,9 +55,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local opts = { buffer = ev.buf }
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-    vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
-    vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
-    vim.keymap.set("n", "<space>wl", function()
+    vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
+    vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
+    vim.keymap.set("n", "<leader>wl", function()
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, opts)
   end,

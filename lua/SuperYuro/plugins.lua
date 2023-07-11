@@ -150,8 +150,8 @@ require("lazy").setup({
         mode = "cursor",
       })
       require("nvim-comment-frame").setup({
-        keymap = "<Space>cc",
-        multiline_keymap = "<Space>cm",
+        keymap = "<Leader>cc",
+        multiline_keymap = "<Leader>cm",
       })
       require("aerial").setup()
       if vim.fn.has("win32") == 1 then
@@ -355,10 +355,10 @@ require("lazy").setup({
   {
     "phaazon/hop.nvim",
     branch = "v2",
-    keys = { { "<Space>", mode = "n" } },
+    keys = { { "<Leader>", mode = "n" } },
     config = function()
       require("hop").setup()
-      vim.keymap.set("n", "<Space><Space>", ":HopWord<CR>", { silent = true, noremap = true })
+      vim.keymap.set("n", "<Leader><Leader>", ":HopWord<CR>", { silent = true, noremap = true })
     end,
   },
 

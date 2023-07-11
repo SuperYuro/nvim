@@ -1,7 +1,7 @@
 local opts = { silent = true, noremap = true }
 local silents = { silent = true }
 
-vim.g.mapleader = "<Space>"
+vim.g.mapleader = " "
 
 -- Increment/Decrement
 vim.keymap.set("n", "+", "<C-a>", opts)
