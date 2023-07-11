@@ -259,14 +259,20 @@ require("lazy").setup({
   { "j-hui/fidget.nvim", branch = "legacy", config = true },
 
   -- Format and Lint
+
+  -- Linter
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "jay-babu/mason-null-ls.nvim",
-    },
+    "mfussenegger/nvim-lint",
     config = function()
-      require("SuperYuro.config.null-ls")
+      require("SuperYuro.config.nvim-lint")
+    end,
+  },
+
+  -- Formatter
+  {
+    "mhartington/formatter.nvim",
+    config = function()
+      require("SuperYuro.config.formatter")
     end,
   },
 
