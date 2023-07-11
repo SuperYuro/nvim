@@ -18,16 +18,19 @@ require("lazy").setup({
 
   -- Colorscheme
   {
-    "Mofiqul/dracula.nvim",
+    "shaunsingh/nord.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      require("dracula").setup({
-        show_end_of_buffer = true,
-        transparent_bg = false,
-        italic_comment = true,
-      })
-      vim.cmd("colorscheme dracula")
+      vim.g.nord_contrast = true
+      vim.g.nord_borders = true
+      vim.g.nord_disable_background = false
+      vim.g.nord_italic = true
+      vim.g.nord_uniform_diff_background = true
+      vim.g.nord_bold = false
+
+      require("nord").set()
+      -- vim.cmd("colorscheme nord")
     end,
   },
 
