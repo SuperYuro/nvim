@@ -24,7 +24,7 @@ require("lazy").setup({
     config = function()
       vim.g.nord_contrast = true
       vim.g.nord_borders = true
-      vim.g.nord_disable_background = true
+      vim.g.nord_disable_background = false
       vim.g.nord_italic = true
       vim.g.nord_uniform_diff_background = true
       vim.g.nord_bold = false
@@ -81,7 +81,7 @@ require("lazy").setup({
           left_mouse_command = "bdelete! %d",
           diagnostics = "nvim_lsp",
           show_duplicate_prefix = false,
-          -- separator_style = "slant",
+          separator_style = "slant",
           always_show_bufferline = true,
           offsets = {
             {
