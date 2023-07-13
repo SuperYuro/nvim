@@ -172,6 +172,7 @@ require("lazy").setup({
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
     },
+    config = true,
   },
 
   -- Highlight same words
