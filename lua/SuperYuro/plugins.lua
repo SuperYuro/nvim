@@ -355,7 +355,24 @@ require("lazy").setup({
   },
 
   -- Highlight color
-  { "norcalli/nvim-colorizer.lua", config = true },
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup({
+        ["*"] = {
+          RGB = true,
+          RRGGBB = true,
+          names = true,
+          RRGGBBAA = true,
+          rgb_fn = true,
+          hsl_fn = true,
+          css = true,
+          css_fn = true,
+          mode = "background",
+        },
+      })
+    end,
+  },
 
   -- Configure tab width automatically
   { "zsugabubus/crazy8.nvim" },
