@@ -14,16 +14,12 @@ require("formatter").setup({
     cpp = { require("formatter.filetypes.cpp").clangformat },
     rust = { require("formatter.filetypes.rust").rustfmt },
     python = {
-      require("formatter.filetypes.python").autopep8,
       require("formatter.filetypes.python").black,
       require("formatter.filetypes.python").isort,
     },
     lua = { require("formatter.filetypes.lua").stylua },
     html = { require("formatter.filetypes.html").prettier },
-    css = {
-      require("formatter.filetypes.css").prettier,
-      require("formatter.filetypes.css").eslint_d,
-    },
+    css = { require("formatter.filetypes.css").prettier },
     javascript = { require("formatter.filetypes.javascript").prettier },
     javascriptreact = { require("formatter.filetypes.javascriptreact").prettier },
     typescript = { require("formatter.filetypes.typescript").prettier },
