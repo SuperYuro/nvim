@@ -18,19 +18,23 @@ require("lazy").setup({
 
   -- Colorscheme
   {
-    "shaunsingh/nord.nvim",
+    "projekt0n/github-nvim-theme",
     lazy = false,
     priority = 1000,
     config = function()
-      vim.g.nord_contrast = true
-      vim.g.nord_borders = true
-      vim.g.nord_disable_background = false
-      vim.g.nord_cursorline_transparent = false
-      vim.g.nord_enable_sidebar_background = false
-      vim.g.nord_italic = true
-      vim.g.nord_uniform_diff_background = true
-      vim.g.nord_bold = false
-      require("nord").set()
+      require("github-theme").setup({
+        options = {
+          transparent = true,
+          terminal_colors = true,
+          dim_inactive = true,
+          inverse = {
+            match_paren = false,
+            visual = true,
+            search = true,
+          },
+        },
+      })
+      vim.cmd("colorscheme github_dark_colorblind")
     end,
   },
 
@@ -81,7 +85,7 @@ require("lazy").setup({
           left_mouse_command = "bdelete! %d",
           diagnostics = "nvim_lsp",
           show_duplicate_prefix = false,
-          separator_style = "slant",
+          -- separator_style = "slant",
           always_show_bufferline = true,
           offsets = {
             {
@@ -178,7 +182,14 @@ require("lazy").setup({
     event = "VeryLazy",
     dependencies = {
       "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
+      {
+        "rcarriga/nvim-notify",
+        config = function()
+          require("notify").setup({
+            background_colour = "#0d1117",
+          })
+        end,
+      },
     },
     config = true,
   },
