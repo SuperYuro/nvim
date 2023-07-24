@@ -281,13 +281,29 @@ require("lazy").setup({
   { "j-hui/fidget.nvim", branch = "legacy", config = true },
 
   -- Format and Lint
+  -- {
+  --   "jose-elias-alvarez/null-ls.nvim",
+  --   dependencies = {
+  --     "jay-babu/mason-null-ls.nvim",
+  --   },
+  --   config = function()
+  --     require("SuperYuro.config.null-ls")
+  --   end,
+  -- },
+
+  -- Formatter
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    dependencies = {
-      "jay-babu/mason-null-ls.nvim",
-    },
+    "mhartington/formatter.nvim",
     config = function()
-      require("SuperYuro.config.null-ls")
+      require("SuperYuro.config.formatter")
+    end,
+  },
+
+  -- Linter
+  {
+    "mfussenegger/nvim-lint",
+    config = function()
+      require("SuperYuro.config.nvim-lint")
     end,
   },
 
