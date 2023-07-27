@@ -18,23 +18,15 @@ require("lazy").setup({
 
   -- Colorscheme
   {
-    "projekt0n/github-nvim-theme",
+    "Mofiqul/dracula.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      require("github-theme").setup({
-        options = {
-          transparent = true,
-          terminal_colors = true,
-          dim_inactive = true,
-          inverse = {
-            match_paren = false,
-            visual = true,
-            search = true,
-          },
-        },
+      require("dracula").setup({
+        show_end_of_buffer = true,
+        italic_comment = true,
       })
-      vim.cmd("colorscheme github_dark_colorblind")
+      vim.cmd("colorscheme dracula")
     end,
   },
 
@@ -86,6 +78,7 @@ require("lazy").setup({
           diagnostics = "nvim_lsp",
           show_duplicate_prefix = false,
           -- separator_style = "slant",
+          separator_style = "slant",
           always_show_bufferline = true,
           offsets = {
             {
