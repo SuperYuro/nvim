@@ -17,12 +17,20 @@ telescope.setup({
         vim.api.nvim_put({ emoji.value }, "c", false, true)
       end,
     },
+    aerial = {
+      show_nesting = {
+        ["_"] = false,
+        json = true,
+        yaml = true,
+      },
+    },
   },
 })
 
 telescope.load_extension("software-licenses")
 telescope.load_extension("emoji")
 telescope.load_extension("env")
+telescope.load_extension("aerial")
 
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "sr", ":Telescope live_grep<CR>", opts)
@@ -31,5 +39,5 @@ vim.keymap.set("n", "sb", ":Telescope buffers<CR>", opts)
 -- vim.keymap.set("n", "s;", ":Telescope resume<CR>", opts)
 vim.keymap.set("n", "sd", ":Telescope diagnostics<CR>", opts)
 vim.keymap.set("n", "se", ":Telescope env<CR>", opts)
--- vim.keymap.set("n", "st", ":Telescope ctags_outline outline<CR>", opts)
+vim.keymap.set("n", "st", ":Telescope aerial<CR>", opts)
 vim.keymap.set("n", "sw", ":Telescope software-licenses find<CR>", opts)
