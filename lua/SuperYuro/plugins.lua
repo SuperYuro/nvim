@@ -150,12 +150,7 @@ require("lazy").setup({
         keymap = "<Leader>cc",
         multiline_keymap = "<Leader>cm",
       })
-      require("aerial").setup()
-      if vim.fn.has("win32") == 1 then
-        local tsintall = require("nvim-treesitter.install")
-        tsintall.prefer_git = false
-        tsintall.compilers = { "clang", "gcc" }
-      end
+      require("aerial").setup({ keymaps = false })
     end,
   },
 
@@ -274,31 +269,31 @@ require("lazy").setup({
   { "j-hui/fidget.nvim", branch = "legacy", config = true },
 
   -- Format and Lint
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    dependencies = {
+      "jay-babu/mason-null-ls.nvim",
+    },
+    config = function()
+      require("SuperYuro.config.null-ls")
+    end,
+  },
+
+  -- Formatter
   -- {
-  --   "jose-elias-alvarez/null-ls.nvim",
-  --   dependencies = {
-  --     "jay-babu/mason-null-ls.nvim",
-  --   },
+  --   "mhartington/formatter.nvim",
   --   config = function()
-  --     require("SuperYuro.config.null-ls")
+  --     require("SuperYuro.config.formatter")
   --   end,
   -- },
 
-  -- Formatter
-  {
-    "mhartington/formatter.nvim",
-    config = function()
-      require("SuperYuro.config.formatter")
-    end,
-  },
-
   -- Linter
-  {
-    "mfussenegger/nvim-lint",
-    config = function()
-      require("SuperYuro.config.nvim-lint")
-    end,
-  },
+  -- {
+  --   "mfussenegger/nvim-lint",
+  --   config = function()
+  --     require("SuperYuro.config.nvim-lint")
+  --   end,
+  -- },
 
   -- Debugging
   {

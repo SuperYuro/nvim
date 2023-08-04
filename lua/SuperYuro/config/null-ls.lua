@@ -59,7 +59,7 @@ null_ls.setup({
     -- Json
     null_ls.builtins.formatting.jq,
     -- Prettier
-    null_ls.builtins.code_actions.eslint,
+    null_ls.builtins.diagnostics.eslint,
     null_ls.builtins.formatting.prettier,
   },
 })
