@@ -18,11 +18,16 @@ require("lazy").setup({
 
   -- Colorscheme
   {
-    "projekt0n/github-nvim-theme",
+    "Mofiqul/dracula.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd("colorscheme github_light")
+      require("dracula").setup({
+        transparent_bg = false,
+        show_end_of_buffer = false,
+        italic_comment = true,
+      })
+      vim.cmd("colorscheme dracula")
     end,
   },
 
