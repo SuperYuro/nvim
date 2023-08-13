@@ -18,16 +18,23 @@ require("lazy").setup({
 
   -- Colorscheme
   {
-    "Mofiqul/dracula.nvim",
+    "EdenEast/nightfox.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      require("dracula").setup({
-        transparent_bg = false,
-        show_end_of_buffer = false,
-        italic_comment = true,
+      require("nightfox").setup({
+        options = {
+          transparent = false,
+          dim_inactive = true,
+          styles = {
+            comments = "italic",
+          },
+          inverse = {
+            visual = true,
+          },
+        },
       })
-      vim.cmd("colorscheme dracula")
+      vim.cmd("colorscheme nordfox")
     end,
   },
 
@@ -78,7 +85,6 @@ require("lazy").setup({
           left_mouse_command = "bdelete! %d",
           diagnostics = "nvim_lsp",
           show_duplicate_prefix = false,
-          -- separator_style = "slant",
           separator_style = "slant",
           always_show_bufferline = true,
           offsets = {
