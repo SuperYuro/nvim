@@ -4,11 +4,8 @@ cmp.setup({
   view = "wildmenu",
 
   formatting = {
-    format = require("lspkind").cmp_format({
+    format = lspkind.cmp_format({
       mode = "symbol_text",
-      preset = "codicons",
-      maxwidth = 50,
-      ellipsis_char = "...",
     }),
   },
   snippet = {
