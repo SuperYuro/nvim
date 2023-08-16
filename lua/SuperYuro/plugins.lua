@@ -24,10 +24,10 @@ require("lazy").setup({
     config = function()
       require("nightfox").setup({
         options = {
-          transparent = false,
-          dim_inactive = true,
+          transparent = true,
+          dim_inactive = false,
           styles = {
-            comments = "italic",
+            comment = "italic",
           },
           inverse = {
             visual = true,
@@ -75,6 +75,7 @@ require("lazy").setup({
     dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
       vim.opt.termguicolors = true
+
       require("bufferline").setup({
         options = {
           mode = "tabs",
@@ -85,7 +86,7 @@ require("lazy").setup({
           left_mouse_command = "bdelete! %d",
           diagnostics = "nvim_lsp",
           show_duplicate_prefix = false,
-          separator_style = "slant",
+          separator_style = "thin",
           always_show_bufferline = true,
           offsets = {
             {
@@ -171,25 +172,6 @@ require("lazy").setup({
     config = true,
   },
 
-  -- Notification
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      {
-        "rcarriga/nvim-notify",
-        config = function()
-          require("notify").setup({
-            background_colour = "#0d1117",
-          })
-        end,
-      },
-    },
-    config = true,
-  },
-
-  -- Highlight same words
   {
     "RRethy/vim-illuminate",
     config = function()
@@ -254,7 +236,7 @@ require("lazy").setup({
 
   -- Rich LSP ui
   {
-    "glepnir/lspsaga.nvim",
+    "nvimdev/lspsaga.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     event = "LspAttach",
     branch = "main",
@@ -365,6 +347,7 @@ require("lazy").setup({
       "saadparwaiz1/cmp_luasnip", -- from snippet
       "hrsh7th/cmp-nvim-lsp-document-symbol", -- from document symbol
       "hrsh7th/cmp-nvim-lsp-signature-help", -- from signatures
+      "ray-x/cmp-treesitter", -- from Treesitter
     },
     config = function()
       require("SuperYuro.config.completions")
