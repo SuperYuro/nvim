@@ -361,8 +361,8 @@ require("lazy").setup({
       "hrsh7th/cmp-buffer", -- from Buffer
       "hrsh7th/cmp-path", -- from file path
       "hrsh7th/cmp-cmdline", -- Complete command line
-      "hrsh7th/cmp-vsnip", -- from snippet
-      "hrsh7th/vim-vsnip", -- from snippet
+      "L3MON4D3/LuaSnip", -- from snippet
+      "saadparwaiz1/cmp_luasnip", -- from snippet
       "hrsh7th/cmp-nvim-lsp-document-symbol", -- from document symbol
       "hrsh7th/cmp-nvim-lsp-signature-help", -- from signatures
     },
