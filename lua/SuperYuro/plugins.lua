@@ -24,8 +24,8 @@ require("lazy").setup({
     config = function()
       require("nightfox").setup({
         options = {
-          transparent = true,
-          dim_inactive = false,
+          transparent = false,
+          dim_inactive = true,
           styles = {
             comment = "italic",
           },
@@ -45,6 +45,9 @@ require("lazy").setup({
       require("lualine").setup({
         options = {
           theme = "auto",
+          disabled_filetypes = {
+            "NvimTree",
+          },
         },
         sections = {
           lualine_a = { "mode" },
