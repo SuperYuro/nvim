@@ -18,12 +18,6 @@ mason_lsp.setup({
   },
 })
 
-local on_attach = function(client)
-  if client.resolved_capabilities.document_formatting then
-    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
-  end
-end
-
 local cmp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 lspconfig.clangd.setup({

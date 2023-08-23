@@ -260,32 +260,21 @@ require("lazy").setup({
   -- Show progress of LSP analysis
   { "j-hui/fidget.nvim", branch = "legacy", config = true },
 
-  -- Format and Lint
+  -- Formatter
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    dependencies = {
-      "jay-babu/mason-null-ls.nvim",
-    },
+    "elentok/format-on-save.nvim",
     config = function()
-      require("SuperYuro.config.null-ls")
+      require("SuperYuro.config.format-on-save")
     end,
   },
 
-  -- Formatter
-  -- {
-  --   "mhartington/formatter.nvim",
-  --   config = function()
-  --     require("SuperYuro.config.formatter")
-  --   end,
-  -- },
-
   -- Linter
-  -- {
-  --   "mfussenegger/nvim-lint",
-  --   config = function()
-  --     require("SuperYuro.config.nvim-lint")
-  --   end,
-  -- },
+  {
+    "mfussenegger/nvim-lint",
+    config = function()
+      require("SuperYuro.config.nvim-lint")
+    end,
+  },
 
   -- Debugging
   {
