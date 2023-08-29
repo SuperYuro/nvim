@@ -14,5 +14,6 @@ format_on_save.setup({
     lua = formatters.stylua,
     sh = formatters.shfmt,
     dart = formatters.lsp,
+    markdown = formatters.lsp
   },
 })
