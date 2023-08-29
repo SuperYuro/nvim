@@ -175,6 +175,11 @@ require("lazy").setup({
         multiline_keymap = "<Leader>cm",
       })
       require("aerial").setup({ keymaps = false })
+      if vim.fn.has("win32") == 1 then
+        local tsinstall = require("nvim-treesitter.install")
+        tsinstall.prefer_git = false
+        tsinstall.compilers = { "clang" }
+      end
     end,
   },
 
