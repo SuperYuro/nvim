@@ -13,5 +13,6 @@ format_on_save.setup({
     rust = formatters.lsp,
     lua = formatters.stylua,
     sh = formatters.shfmt,
+    dart = formatters.lsp,
   },
 })
