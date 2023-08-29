@@ -18,20 +18,23 @@ require("lazy").setup({
 
   -- Colorscheme
   {
-    "projekt0n/github-nvim-theme",
+    "EdenEast/nightfox.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      require("github-theme").setup({
+      require("nightfox").setup({
         options = {
           transparent = false,
-          dim_inactive = true,
+          dim_inactive = false,
           styles = {
             comment = "italic",
           },
+          inverse = {
+            visual = true,
+          },
         },
       })
-      vim.cmd("colorscheme github_light")
+      vim.cmd("colorscheme nordfox")
     end,
   },
 
@@ -86,7 +89,7 @@ require("lazy").setup({
           left_mouse_command = "bdelete! %d",
           diagnostics = "nvim_lsp",
           show_duplicate_prefix = false,
-          separator_style = "thin",
+          separator_style = "slant",
           always_show_bufferline = true,
           offsets = {
             {
