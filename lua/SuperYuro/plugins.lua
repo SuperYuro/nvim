@@ -104,6 +104,17 @@ require("lazy").setup({
     end,
   },
 
+  -- Notification
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+    config = true,
+  },
+
   -- Syntax highlighting
   {
     "nvim-treesitter/nvim-treesitter",
