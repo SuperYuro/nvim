@@ -20,7 +20,7 @@ if is_linux then
 end
 
 if is_win then
-  vim.opt.shell = "powershell"
+  vim.opt.shell = "pwsh"
   vim.opt.clipboard:prepend({ "unnamed", "unnamedplus" })
   vim.opt.fileformats = "dos,unix"
 end
