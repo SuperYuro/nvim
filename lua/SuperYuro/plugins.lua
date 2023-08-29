@@ -164,7 +164,7 @@ require("lazy").setup({
       })
       require("nvim-ts-autotag").setup()
       require("treesitter-context").setup({
-        enable = false,
+        enable = true,
         max_linex = 0,
         min_window_height = 0,
         line_numbers = false,
