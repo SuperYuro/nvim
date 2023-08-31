@@ -143,6 +143,7 @@ require("lazy").setup({
           "javascript",
           "typescript",
           "tsx",
+          "dart",
           "json",
           "json5",
           "ini",
