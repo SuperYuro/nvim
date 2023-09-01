@@ -282,6 +282,7 @@ require("lazy").setup({
   -- Formatter
   {
     "elentok/format-on-save.nvim",
+    event = "LspAttach",
     config = function()
       require("SuperYuro.config.format-on-save")
     end,
