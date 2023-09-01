@@ -1,10 +1,13 @@
 local format_on_save = require("format-on-save")
 local formatters = require("format-on-save.formatters")
 
-local lsp_or_prettierd = { formatters.lsp, formatters.if_file_exists({
-  pattern = { ".prettierrc", "prettierrc.*" },
-  formatter = formatters.prettierd,
-}), }
+local lsp_or_prettierd = {
+  formatters.lsp,
+  formatters.if_file_exists({
+    pattern = { ".prettierrc", "prettierrc.*" },
+    formatter = formatters.prettierd,
+  }),
+}
 
 local clang_format = formatters.shell({
   cmd = { "clang-format", "--assume-filename", "%" },
