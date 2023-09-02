@@ -22,11 +22,14 @@ format_on_save.setup({
     ".local/share/nvim/lazy",
   },
   formatter_by_ft = {
+    c = clang_format,
+    cpp = clang_format,
     rust = formatters.lsp,
     lua = formatters.stylua,
     sh = formatters.shfmt,
     dart = formatters.lsp,
     json = formatters.jq,
+    yaml = formatters.lsp,
     html = lsp_or_prettierd,
     css = lsp_or_prettierd,
     javascript = lsp_or_prettierd,
@@ -38,8 +41,6 @@ format_on_save.setup({
       formatters.black,
       -- formatters.isort
     },
-    c = clang_format,
-    cpp = clang_format,
   },
   run_with_sh = vim.fn.has("win32") ~= 1,
 })
