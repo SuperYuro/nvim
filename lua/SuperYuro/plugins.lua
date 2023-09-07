@@ -18,21 +18,21 @@ require("lazy").setup({
 
   -- Colorscheme
   {
-    "projekt0n/github-nvim-theme",
+    "EdenEast/nightfox.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      require("github-theme").setup({
+      require("nightfox").setup({
         options = {
           styles = {
             comment = "italic",
           },
           inverse = {
-            visual = false,
+            visual = true,
           },
         },
       })
-      vim.cmd("colorscheme github_light")
+      vim.cmd("colorscheme carbonfox")
     end,
   },
 
