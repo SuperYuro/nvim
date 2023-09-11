@@ -24,6 +24,8 @@ require("lazy").setup({
     config = function()
       require("nightfox").setup({
         options = {
+          transparent = true,
+          dim_inactive = true,
           styles = {
             comment = "italic",
           },
@@ -32,7 +34,7 @@ require("lazy").setup({
           },
         },
       })
-      vim.cmd("colorscheme carbonfox")
+      vim.cmd("colorscheme nordfox")
     end,
   },
 
@@ -87,7 +89,7 @@ require("lazy").setup({
           left_mouse_command = "bdelete! %d",
           diagnostics = "nvim_lsp",
           show_duplicate_prefix = false,
-          separator_style = "slant",
+          separator_style = "thin",
           always_show_bufferline = true,
           offsets = {
             {
@@ -100,17 +102,6 @@ require("lazy").setup({
         },
       })
     end,
-  },
-
-  -- Notification
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
-    },
-    config = true,
   },
 
   -- Syntax highlighting
