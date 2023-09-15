@@ -14,4 +14,9 @@ lint.linters_by_ft = {
   markdown = { "markdownlint" },
   yaml = { "yamllint" },
   fish = { "fish" },
+  javascript = { "eslint_d" },
+  typescript = { "eslint_d" },
+  typescriptreact = { "eslint_d" },
+  astro = { "eslint_d" },
+  svelte = { "eslint_d" },
 }
