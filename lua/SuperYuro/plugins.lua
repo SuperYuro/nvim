@@ -24,7 +24,7 @@ require("lazy").setup({
     config = function()
       require("nightfox").setup({
         options = {
-          transparent = true,
+          transparent = false,
           dim_inactive = true,
           styles = {
             comment = "italic",
@@ -89,7 +89,7 @@ require("lazy").setup({
           left_mouse_command = "bdelete! %d",
           diagnostics = "nvim_lsp",
           show_duplicate_prefix = false,
-          separator_style = "thin",
+          separator_style = "slant",
           always_show_bufferline = true,
           offsets = {
             {
