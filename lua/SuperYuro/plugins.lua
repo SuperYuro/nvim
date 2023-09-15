@@ -1,7 +1,7 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
-      "git",
+    "git",
     "clone",
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
@@ -270,10 +270,9 @@ require("lazy").setup({
 
   -- Formatter
   {
-    "stevearc/conform.nvim",
-    opts = {},
+    "elentok/format-on-save.nvim",
     config = function()
-      require("SuperYuro.config.conform")
+      require("SuperYuro.config.format-on-save")
     end,
   },
 
