@@ -30,7 +30,10 @@ format_on_save.setup({
     typescriptreact = formatters.prettierd,
     astro = formatters.prettierd,
     svelte = formatters.prettierd,
-    python = formatters.black,
+    python = {
+      formatters.black,
+      formatters.isort,
+    },
   },
   -- run_with_sh = vim.fn.has("win32") ~= 1,
 })
