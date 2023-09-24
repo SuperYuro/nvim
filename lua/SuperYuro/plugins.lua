@@ -329,6 +329,15 @@ require("lazy").setup({
     config = true,
   },
 
+  -- Markdown
+  {
+    "lukas-reineke/headlines.nvim",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    config = function()
+      require("SuperYuro.config.headlines")
+    end, -- or `opts = {}`
+  },
+
   ----------------------------------------------------------------------
   --                         Editing Support                          --
   ----------------------------------------------------------------------
