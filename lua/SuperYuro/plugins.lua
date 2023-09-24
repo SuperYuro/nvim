@@ -112,7 +112,6 @@ require("lazy").setup({
       "windwp/nvim-ts-autotag",
       "RRethy/nvim-treesitter-endwise",
       "yioneko/nvim-yati",
-      "nvim-treesitter/nvim-treesitter-context",
       "JoosepAlviste/nvim-ts-context-commentstring",
       "nvim-treesitter/nvim-tree-docs",
       "s1n7ax/nvim-comment-frame",
@@ -153,13 +152,6 @@ require("lazy").setup({
         tree_docs = { enable = true },
       })
       require("nvim-ts-autotag").setup()
-      require("treesitter-context").setup({
-        enable = true,
-        max_linex = 0,
-        min_window_height = 0,
-        line_numbers = false,
-        mode = "cursor",
-      })
       require("nvim-comment-frame").setup({
         keymap = "<Leader>cc",
         multiline_keymap = "<Leader>cm",
