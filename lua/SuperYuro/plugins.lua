@@ -44,6 +44,7 @@ require("lazy").setup({
     config = function()
       require("lualine").setup({
         options = {
+          transparent = true,
           theme = "auto",
           disabled_filetypes = {
             "NvimTree",
@@ -140,6 +141,7 @@ require("lazy").setup({
           "rust",
           "markdown",
           "markdown_inline",
+          "norg",
           "gitignore",
           "git_config",
           "git_rebase",
@@ -262,9 +264,10 @@ require("lazy").setup({
 
   -- Formatter
   {
-    "elentok/format-on-save.nvim",
+    "stevearc/conform.nvim",
+    opts = {},
     config = function()
-      require("SuperYuro.config.format-on-save")
+      require("SuperYuro.config.conform")
     end,
   },
 
