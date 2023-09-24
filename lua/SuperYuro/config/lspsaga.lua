@@ -113,4 +113,4 @@ vim.keymap.set("n", "<Leader>D", ":Lspsaga goto_type_definition<CR>", opts) -- t
 vim.keymap.set("n", "<Leader>rn", ":Lspsaga rename<CR>", opts) -- rename
 vim.keymap.set("n", "<Leader>ca", ":Lspsaga code_action<CR>", opts) -- code_action
 vim.keymap.set("v", "<Leader>ca", ":Lspsaga range_code_action<CR>", opts) -- code_action for selected buffer
-vim.keymap.set("n", "gr", ":Lspsaga lsp_finder<CR>", opts) -- references
+vim.keymap.set("n", "gr", ":Lspsaga finder def+ref<CR>", opts) -- references
