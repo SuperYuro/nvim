@@ -1,5 +1,5 @@
-require('nvim-tree').setup {
-  sort_by = 'case_sensitive',
+require("nvim-tree").setup({
+  sort_by = "case_sensitive",
   view = {
     width = 30,
   },
@@ -9,6 +9,6 @@ require('nvim-tree').setup {
   filters = {
     dotfiles = true,
   },
-}
+})
 
-vim.keymap.set('n', '<C-f>', ':NvimTreeToggle<CR>', { silent = true })
+vim.keymap.set("n", "<C-f>", ":NvimTreeToggle<CR>", { silent = true })

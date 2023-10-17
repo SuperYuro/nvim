@@ -1,10 +1,10 @@
-require('noice').setup {
+require("noice").setup({
   lsp = {
     -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
     override = {
-      ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
-      ['vim.lsp.util.stylize_markdown'] = true,
-      ['cmp.entry.get_documentation'] = true,
+      ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+      ["vim.lsp.util.stylize_markdown"] = true,
+      ["cmp.entry.get_documentation"] = true,
     },
   },
   -- you can enable a preset for easier configuration
@@ -19,30 +19,30 @@ require('noice').setup {
     cmdline_popup = {
       position = {
         row = 5,
-        col = '50%',
+        col = "50%",
       },
       size = {
         width = 60,
-        height = 'auto',
+        height = "auto",
       },
     },
     popupmenu = {
-      relative = 'editor',
+      relative = "editor",
       position = {
         row = 8,
-        col = '50%',
+        col = "50%",
       },
       size = {
         width = 60,
         height = 10,
       },
       border = {
-        style = 'rounded',
+        style = "rounded",
         padding = { 0, 1 },
       },
       win_options = {
-        winhighlight = { Normal = 'Normal', FloatBorder = 'DiagnosticInfo' },
+        winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
       },
     },
   },
-}
+})
