@@ -25,7 +25,7 @@ require("lazy").setup({
       require("nightfox").setup({
         options = {
           transparent = false,
-          dim_inactive = true,
+          dim_inactive = false,
           styles = {
             comment = "italic",
           },
@@ -190,6 +190,7 @@ require("lazy").setup({
     end,
   },
 
+  -- Highlight same words
   {
     "RRethy/vim-illuminate",
     config = function()
@@ -207,10 +208,7 @@ require("lazy").setup({
   {
     "lukas-reineke/indent-blankline.nvim",
     config = function()
-      require("indent_blankline").setup({
-        show_current_context = true,
-        show_current_context_start = true,
-      })
+      require("ibl").setup({})
     end,
   },
 
