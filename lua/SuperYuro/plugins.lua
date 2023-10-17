@@ -214,9 +214,11 @@ require("lazy").setup({
     "nvim-telescope/telescope.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope-file-browser.nvim", -- Browse file
       "chip/telescope-software-licenses.nvim", -- Search Software License
       "xiyaowong/telescope-emoji.nvim", -- Search emoji
       "LinArcX/telescope-env.nvim", -- Show environment variables
+      "nvim-telescope/telescope-dap.nvim", -- nvim-dap integration
     },
     config = function()
       require("SuperYuro.config.telescope")
