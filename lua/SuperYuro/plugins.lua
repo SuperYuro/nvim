@@ -266,10 +266,9 @@ require("lazy").setup({
 
   -- Formatter
   {
-    "stevearc/conform.nvim",
-    opts = {},
+    "elentok/format-on-save.nvim",
     config = function()
-      require("SuperYuro.config.conform")
+      require("SuperYuro.config.format-on-save")
     end,
   },
 
