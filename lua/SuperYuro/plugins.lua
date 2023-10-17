@@ -177,6 +177,19 @@ require("lazy").setup({
     config = true,
   },
 
+  -- Notify
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+    config = function()
+      require("SuperYuro.config.noice")
+    end,
+  },
+
   {
     "RRethy/vim-illuminate",
     config = function()
