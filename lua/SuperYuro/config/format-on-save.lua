@@ -18,6 +18,9 @@ format_on_save.setup({
 
     rust = formatters.lsp,
 
+    gradle = formatters.lsp,
+    java = clang_format,
+
     lua = formatters.stylua,
 
     html = formatters.prettierd,
