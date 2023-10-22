@@ -34,7 +34,7 @@ require("lazy").setup({
           },
         },
       })
-      vim.cmd("colorscheme carbonfox")
+      vim.cmd("colorscheme nordfox")
     end,
   },
 
