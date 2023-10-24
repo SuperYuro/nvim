@@ -438,7 +438,7 @@ require("lazy").setup({
   {
     "f-person/git-blame.nvim",
     config = function()
-      vim.g.gitblame_enabled = 0
+      vim.g.gitblame_enabled = 1
       vim.g.gitblame_message_template = "<summary> by <author> (<date>)"
       vim.g.gitblame_message_when_not_committed = ""
       vim.g.gitblame_date_format = "%r"
