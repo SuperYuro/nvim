@@ -7,6 +7,8 @@ vim.opt.fileencoding = "utf-8"
 vim.wo.number = false
 -- vim.wo.relativenumber = true
 
+vim.opt.mouse = ""
+
 vim.opt.title = true
 vim.opt.autoindent = true
 vim.opt.hlsearch = true
