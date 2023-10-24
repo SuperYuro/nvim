@@ -36,7 +36,8 @@ format_on_save.setup({
     python = formatters.black,
 
     yaml = formatters.lsp,
-    json = formatters.jq,
+    -- json = formatters.jq,
+    json = formatters.lsp,
     toml = formatters.lsp,
   },
 })
