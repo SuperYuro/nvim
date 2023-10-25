@@ -171,10 +171,12 @@ require("lazy").setup({
   {
     "petertriho/nvim-scrollbar",
     dependencies = {
-      { "lewis6991/gitsigns.nvim", config = true }, -- Show git status
-      { "kevinhwang91/nvim-hlslens", config = true }, -- Highlight search results
+      "lewis6991/gitsigns.nvim", -- Show git status
+      "kevinhwang91/nvim-hlslens", -- Highlight search results
     },
-    config = true,
+    config = function()
+      require("SuperYuro.config.scrollbar")
+    end,
   },
 
   -- Notify
