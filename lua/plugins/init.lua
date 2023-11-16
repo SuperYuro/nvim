@@ -10,3 +10,14 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup({
+    {
+        -- Colorscheme
+        "rebelot/kanagawa.nvim",
+        lazy = false,
+        priority = 1000,
+        build = ":KanagawaCompile",
+        config = require("plugins.kanagawa"),
+    },
+})
