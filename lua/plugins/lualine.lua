@@ -1,3 +1,5 @@
+local icons = require("utils.icons")
+
 return {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
@@ -34,7 +36,7 @@ return {
                 {
                     "diff",
                     colored = true,
-                    -- symbols = {},
+                    symbols = icons.diff,
                 },
             },
             lualine_c = {
@@ -50,13 +52,18 @@ return {
                 {
                     "diagnostics",
                     sources = { "nvim_diagnostic", "nvim_lsp" },
+                    symbols = icons.diagnostics,
                     colored = true,
                     update_in_insert = true,
                     always_visible = true,
                 },
             },
-            lualine_y = {},
-            lualine_z = {},
+            lualine_y = {
+                "encoding",
+                "fileformat",
+                "filetype",
+            },
+            lualine_z = { "progress", "location" },
         },
     },
 }
