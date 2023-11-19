@@ -18,28 +18,16 @@ return {
       automatic_installation = false,
     })
 
+    local lspconfig = require("lspconfig")
+
     require("mason-lspconfig").setup_handlers({
       function(server_name) -- default handler (optional)
         local on_attach = nil
-        local capabilities = {
-          require("cmp_nvim_lsp").default_capabilities(),
-        }
+        local capabilities = { require("cmp_nvim_lsp").default_capabilities() }
 
-        require("lspconfig")[server_name].setup({
+        lspconfig[server_name].setup({
           on_attach = on_attach,
           capabilities = capabilities,
-        })
-      end,
-      ["lua_ls"] = function()
-        local lspconfig = require("lspconfig")
-        lspconfig.lua_ls.setup({
-          settings = {
-            Lua = {
-              diagnostics = {
-                globals = { "vim" },
-              },
-            },
-          },
         })
       end,
     })
