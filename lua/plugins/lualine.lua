@@ -33,13 +33,13 @@ return {
         {
           "branch",
         },
+      },
+      lualine_c = {
         {
           "diff",
           colored = true,
           symbols = icons.diff,
         },
-      },
-      lualine_c = {
         {
           "filename",
           file_status = false,
