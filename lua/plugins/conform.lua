@@ -1,11 +1,11 @@
 return {
   "stevearc/conform.nvim",
-  dependencies = {
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
-  },
-  lazy = false,
+  event = "VeryLazy",
   opts = {
     formatters_by_ft = {
+      c = { "clang-format" },
+      cpp = { "clang-format" },
+
       lua = { "stylua" },
     },
     format_on_save = {

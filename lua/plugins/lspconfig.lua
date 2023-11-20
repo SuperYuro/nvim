@@ -20,14 +20,21 @@ return {
 
     local lspconfig = require("lspconfig")
 
+    local on_attach = nil
+    local cmp_capabilities = require("cmp_nvim_lsp").default_capabilities()
+
     require("mason-lspconfig").setup_handlers({
       function(server_name) -- default handler (optional)
-        local on_attach = nil
-        local capabilities = { require("cmp_nvim_lsp").default_capabilities() }
-
         lspconfig[server_name].setup({
           on_attach = on_attach,
-          capabilities = capabilities,
+          capabilities = { cmp_capabilities },
+        })
+      end,
+
+      ["clangd"] = function()
+        lspconfig["clangd"].setup({
+          on_attach = on_attach,
+          capabilities = { cmp_capabilities, defaultEncoding = "utf-8" },
         })
       end,
     })

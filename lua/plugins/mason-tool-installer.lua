@@ -5,9 +5,9 @@ return {
     ensure_installed = {
       -- Formatters
       "stylua",
+      "clang-format",
+
       -- Linters
-      -- Dap
-      "debugpy",
     },
     auto_update = true,
     run_on_start = true,
