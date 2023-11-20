@@ -6,7 +6,7 @@ return {
     {
       "nvim-treesitter/nvim-treesitter-context",
       opts = {
-        enable = true,
+        enable = false,
       },
     },
     "HiPhish/nvim-ts-rainbow2",
