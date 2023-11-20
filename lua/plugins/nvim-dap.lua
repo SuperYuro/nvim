@@ -4,10 +4,10 @@ return {
     "mfussenegger/nvim-dap-python",
   },
   keys = {
-    { "<F5>", require("dap").continue(), desc = "Continue debug" },
-    { "<F9>", require("dap").toggle_breakpoint(), desc = "Toggle breakpoint" },
-    { "<F10>", require("dap").step_over(), desc = "Step over" },
-    { "<F11>", require("dap").step_into(), desc = "Step into" },
+    { "<F5>", function() require("dap").continue() end, desc = "Continue debug" },
+    { "<F9>", function() require("dap").toggle_breakpoint() end, desc = "Toggle breakpoint" },
+    { "<F10>", function() require("dap").step_over() end, desc = "Step over" },
+    { "<F11>", function() require("dap").step_into() end, desc = "Step into" },
   },
   config = function()
     local dap = require("dap")
