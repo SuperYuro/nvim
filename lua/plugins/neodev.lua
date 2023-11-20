@@ -4,8 +4,10 @@ return {
     "neovim/nvim-lspconfig",
   },
   ft = { "lua" },
-  event = "LspAttach",
-  config = function()
+  opts = {},
+  config = function(_, opts)
+    require("neodev").setup(opts)
+
     require("lspconfig").lua_ls.setup({
       settings = {
         Lua = {
