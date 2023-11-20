@@ -21,7 +21,6 @@ return {
         toggle_or_open = { "o", "<space>" },
         vsplit = { "<C-v>" },
         tabnew = { "<C-t>" },
-        close = { "q", "<ESC>" },
         quit = { "q", "<ESC>" },
       },
     },
