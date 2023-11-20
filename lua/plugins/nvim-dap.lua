@@ -1,7 +1,17 @@
+local ensure_installed = {
+  "chrome",
+  "js",
+  "dart",
+  "cppdbg",
+  "codelldb",
+  "python",
+}
+
 return {
   "mfussenegger/nvim-dap",
   dependencies = {
     "mfussenegger/nvim-dap-python",
+    "jay-babu/mason-nvim-dap.nvim",
   },
   keys = {
     { "<F5>", function() require("dap").continue() end, desc = "Continue debug" },
@@ -11,32 +21,13 @@ return {
   },
   config = function()
     local dap = require("dap")
+    local mason_dap = require("mason-nvim-dap")
 
-    -- Python
-    dap.adapters.python = function(cb, config)
-      if config.request == "attach" then
-        ---@diagnostic disable-next-line: undefined-field
-        local port = (config.connect or config).port
-        ---@diagnostic disable-next-line: undefined-field
-        local host = (config.connect or config).host or "127.0.0.1"
-        cb({
-          type = "server",
-          port = assert(port, "`connect.port` is required for a python `attach` configuration"),
-          host = host,
-          options = {
-            source_filetype = "python",
-          },
-        })
-      else
-        cb({
-          type = "executable",
-          command = "path/to/virtualenvs/debugpy/bin/python",
-          args = { "-m", "debugpy.adapter" },
-          options = {
-            source_filetype = "python",
-          },
-        })
-      end
-    end
+    mason_dap.setup({
+      ensure_installed = ensure_installed,
+      handlers = {
+        function(config) mason_dap.default_setup(config) end,
+      },
+    })
   end,
 }
