@@ -1,4 +1,5 @@
 local ensure_installed = {
+  "clangd",
   "lua_ls",
 }
 
