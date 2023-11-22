@@ -11,6 +11,8 @@ return {
 
       lua = { "stylua" },
 
+      html = js_formatters,
+      css = js_formatters,
       javascript = js_formatters,
       javascriptreact = js_formatters,
       typescript = js_formatters,
