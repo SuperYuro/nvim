@@ -1,6 +1,13 @@
 local ensure_installed = {
   "clangd",
   "lua_ls",
+
+  "html",
+  "cssls",
+  "tsserver",
+  "svelte",
+  "astro",
+  "tailwindcss",
 }
 
 return {
