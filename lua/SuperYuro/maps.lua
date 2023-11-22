@@ -4,10 +4,6 @@ local silents = { silent = true }
 
 vim.g.mapleader = " "
 
--- Increment/Decrement
-vim.keymap.set("n", "+", "<C-a>", opts)
-vim.keymap.set("n", "-", "<C-x>", opts)
-
 -- cursor manipulation like Emacs
 vim.keymap.set("i", "<C-f>", "<Right>", silents)
 vim.keymap.set("i", "<C-b>", "<Left>", silents)

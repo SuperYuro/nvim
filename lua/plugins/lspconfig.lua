@@ -7,9 +7,12 @@ local ensure_installed = {
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
+    -- LSP Installer
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "jubnzv/virtual-types.nvim",
+
+    -- Completion from LSP
     "hrsh7th/cmp-nvim-lsp",
   },
   lazy = false,
@@ -37,7 +40,7 @@ return {
       ["clangd"] = function()
         lspconfig["clangd"].setup({
           on_attach = on_attach,
-          capabilities = { cmp_capabilities, defaultEncoding = "utf-8" },
+          capabilities = { cmp_capabilities, offsetEncoding = "utf-8" },
         })
       end,
     })
