@@ -1,3 +1,6 @@
+local builtins = require("conform-selector.builtins")
+local js_formatters = builtins.javascript.formatters()
+
 return {
   "stevearc/conform.nvim",
   event = "VeryLazy",
@@ -7,6 +10,13 @@ return {
       cpp = { "clang-format" },
 
       lua = { "stylua" },
+
+      javascript = js_formatters,
+      javascriptreact = js_formatters,
+      typescript = js_formatters,
+      typescriptreact = js_formatters,
+      svelte = js_formatters,
+      astro = js_formatters,
     },
     format_on_save = {
       timeout_ms = 500,
