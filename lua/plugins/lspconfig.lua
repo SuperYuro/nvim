@@ -1,5 +1,6 @@
 local ensure_installed = {
   "clangd",
+
   "lua_ls",
 }
 
@@ -8,6 +9,7 @@ return {
   dependencies = {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
+    "jubnzv/virtual-types.nvim",
     "hrsh7th/cmp-nvim-lsp",
   },
   lazy = false,
@@ -21,7 +23,7 @@ return {
 
     local lspconfig = require("lspconfig")
 
-    local on_attach = nil
+    local on_attach = require("virtualtypes").on_attach
     local cmp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
     require("mason-lspconfig").setup_handlers({
