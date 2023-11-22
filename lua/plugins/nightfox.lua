@@ -6,9 +6,9 @@ return {
     options = {
 
       transparent = true,
-    },
-    inverse = {
-      visual = true,
+      inverse = {
+        visual = true,
+      },
     },
   },
   config = function(_, opts)
