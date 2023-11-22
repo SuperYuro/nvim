@@ -6,6 +6,8 @@ return {
       -- Formatters
       "stylua",
       "clang-format",
+      "prettierd",
+      "rustywind",
 
       -- Linters
     },
