@@ -9,6 +9,8 @@ return {
     { "<leader>rn", "<cmd>Lspsaga rename<cr>", desc = "Lspsaga rename" },
     { "K", "<cmd>Lspsaga hover_doc<cr>", desc = "Hover doc" },
     { "<leader>ca", "<cmd>Lspsaga code_action<cr>", desc = "Code action" },
+    { "gd", "<cmd>Lspsaga goto_definition<cr>", desc = "Goto definition" },
+    { "<C-j>", "<cmd>Lspsaga diagnostic_jump_next<cr>", desc = "Goto next diagnostics" },
   },
   opts = {
     lightbulb = {
@@ -49,6 +51,12 @@ return {
       separator = "  ",
       show_file = true,
       folder_level = 5,
+    },
+    diagnostics = {
+      show_code_action = true,
+      keys = {
+        quit = { "q", "<ESC>" },
+      },
     },
   },
 }
