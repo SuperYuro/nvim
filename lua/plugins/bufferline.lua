@@ -30,7 +30,7 @@ return {
       show_buffer_icons = true,
       show_buffer_close_icons = true,
       show_close_icons = true,
-      show_tab_indicators = true,
+      show_tab_indicators = false,
       show_duplicate_prefix = false,
       separator_style = "slant",
       always_show_bufferline = true,
