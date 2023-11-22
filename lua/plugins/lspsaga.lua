@@ -12,7 +12,7 @@ return {
   },
   opts = {
     lightbulb = {
-      enabled = false,
+      enable = false,
     },
     finder = {
       layout = "float",
@@ -46,7 +46,7 @@ return {
     },
     symbol_in_winbar = {
       enable = true,
-      separator = "",
+      separator = "  ",
       show_file = true,
       folder_level = 5,
     },
