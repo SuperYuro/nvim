@@ -4,8 +4,6 @@ return {
   priority = 1000,
   opts = {
     options = {
-
-      transparent = true,
       inverse = {
         visual = true,
       },
