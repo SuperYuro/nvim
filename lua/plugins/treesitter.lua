@@ -2,15 +2,6 @@ return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
   lazy = false,
-  dependencies = {
-    {
-      "nvim-treesitter/nvim-treesitter-context",
-      opts = {
-        enable = false,
-      },
-    },
-    "HiPhish/nvim-ts-rainbow2",
-  },
   config = function()
     require("nvim-treesitter.configs").setup({
       ensure_installed = "all",
@@ -18,7 +9,6 @@ return {
       highlight = {
         enable = true,
       },
-      rainbow = { enable = true }, -- nvim-ts-rainbow2
     })
   end,
 }
