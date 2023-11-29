@@ -15,7 +15,7 @@ return {
   "neovim/nvim-lspconfig",
   dependencies = {
     -- LSP Installer
-    { "williamboman/mason.nvim", build = ":MasonUpdate" },
+    "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
 
     -- Completion from LSP
