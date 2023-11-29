@@ -39,10 +39,36 @@ return {
     local cmp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
     require("mason-lspconfig").setup_handlers({
+
       function(server_name) -- default handler (optional)
         lspconfig[server_name].setup({
           -- on_attach = on_attach,
           capabilities = { cmp_capabilities },
+        })
+      end,
+
+      ["denols"] = function()
+        lspconfig["denols"].setup({
+          root_dir = lspconfig.util.root_pattern({ "deno.json", "deno.jsonc" }),
+          init_options = {
+            lint = true,
+            unstable = true,
+            suggest = {
+              imports = {
+                hosts = {
+                  ["https://deno.land"] = true,
+                  ["https://cdn.nest.land"] = true,
+                  ["https://crux.land"] = true,
+                },
+              },
+            },
+          },
+        })
+      end,
+
+      ["tsserver"] = function()
+        lspconfig["tsserver"].setup({
+          root_dir = lspconfig.util.root_pattern("package.json"),
         })
       end,
 
