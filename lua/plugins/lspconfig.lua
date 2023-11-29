@@ -3,6 +3,9 @@ local ensure_installed = {
 
   "lua_ls",
 
+  "dockerls",
+  "docker_compose_language_service",
+
   "html",
   "cssls",
   "tsserver",
