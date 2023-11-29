@@ -11,6 +11,8 @@ return {
 
       lua = { "stylua" },
 
+      python = { "black", "isort" },
+
       html = js_formatters,
       css = js_formatters,
       javascript = js_formatters,
