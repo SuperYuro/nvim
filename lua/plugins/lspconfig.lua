@@ -12,6 +12,8 @@ local ensure_installed = {
   "svelte",
   "astro",
   "tailwindcss",
+
+  "taplo",
 }
 
 return {

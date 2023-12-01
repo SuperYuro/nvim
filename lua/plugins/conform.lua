@@ -21,6 +21,10 @@ return {
       typescriptreact = js_formatters,
       svelte = js_formatters,
       astro = js_formatters,
+
+      json = { "jq" },
+      toml = { "taplo" },
+      yaml = { "yamlfmt" },
     },
     format_on_save = {
       timeout_ms = 500,

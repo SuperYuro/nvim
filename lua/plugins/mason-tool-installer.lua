@@ -12,8 +12,12 @@ return {
       "black",
       "isort",
 
+      "jq",
+      "yamlfmt",
+
       -- Linters
       "flake8",
+      "yamllint",
     },
     auto_update = true,
     run_on_start = true,
