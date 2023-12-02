@@ -1,11 +1,8 @@
+-- Keymaps
 local opts = { silent = true, noremap = true }
 local silents = { silent = true }
 
 vim.g.mapleader = " "
-
--- Increment/Decrement
-vim.keymap.set("n", "+", "<C-a>", opts)
-vim.keymap.set("n", "-", "<C-x>", opts)
 
 -- cursor manipulation like Emacs
 vim.keymap.set("i", "<C-f>", "<Right>", silents)
@@ -39,6 +36,9 @@ vim.keymap.set("n", "U", "<C-r>", opts)
 
 -- Don'y yank with x
 vim.keymap.set("n", "x", '"_x')
+
+-- Kill q
+vim.keymap.set("n", "q", ":w<CR>", opts)
 
 -- Exit terminal insert mode with Esc
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
