@@ -29,12 +29,11 @@ local tailwind_rc_files = {
 M.formatters = function()
   local formatters = {}
 
-  if rc_file_exists(prettier_rc_files) then
-    table.insert(formatters, "prettierd")
-  end
-
+  -- BiomeとPrettierがconflictしないようにする
   if rc_file_exists(biome_rc_files) then
     table.insert(formatters, "biome")
+  else
+    table.insert(formatters, "prettierd")
   end
 
   if rc_file_exists(tailwind_rc_files) then
