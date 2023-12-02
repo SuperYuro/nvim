@@ -15,6 +15,8 @@ return {
       "jq",
       "yamlfmt",
 
+      "biome",
+
       -- Linters
       "flake8",
       "yamllint",
