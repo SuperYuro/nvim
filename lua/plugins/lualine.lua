@@ -2,18 +2,14 @@ local icons = require("utils.icons")
 
 return {
   "nvim-lualine/lualine.nvim",
-  event = "VeryLazy",
+  event = "BufRead",
   opts = {
     options = {
       icons_enabled = true,
       theme = "auto",
       component_separators = { left = "", right = "" },
       section_separators = { left = "", right = "" },
-      disabled_filetypes = {
-        statusline = {},
-        tabline = {},
-        winbar = {},
-      },
+      disabled_filetypes = { "NvimTree", "lazy", "startuptime" },
       ignore_focus = {},
       always_divide_middle = true,
       globalstatus = true,
