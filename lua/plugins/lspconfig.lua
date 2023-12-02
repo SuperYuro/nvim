@@ -1,6 +1,8 @@
 local ensure_installed = {
   "clangd",
 
+  "rust_analyzer",
+
   "lua_ls",
 
   "dockerls",
@@ -37,20 +39,19 @@ return {
 
     local lspconfig = require("lspconfig")
 
-    local on_attach = nil
     local cmp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
     require("mason-lspconfig").setup_handlers({
 
       function(server_name) -- default handler (optional)
         lspconfig[server_name].setup({
-          -- on_attach = on_attach,
-          capabilities = { cmp_capabilities },
+          capabilities = cmp_capabilities,
         })
       end,
 
       ["denols"] = function()
         lspconfig["denols"].setup({
+          capabilities = cmp_capabilities,
           root_dir = lspconfig.util.root_pattern({ "deno.json", "deno.jsonc" }),
           init_options = {
             lint = true,
@@ -70,13 +71,13 @@ return {
 
       ["tsserver"] = function()
         lspconfig["tsserver"].setup({
+          capabilities = cmp_capabilities,
           root_dir = lspconfig.util.root_pattern("package.json"),
         })
       end,
 
       ["clangd"] = function()
         lspconfig["clangd"].setup({
-          -- on_attach = on_attach,
           capabilities = { cmp_capabilities, offsetEncoding = "utf-8" },
         })
       end,
