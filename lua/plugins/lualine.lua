@@ -2,7 +2,7 @@ local icons = require("utils.icons")
 
 return {
   "nvim-lualine/lualine.nvim",
-  event = "BufRead",
+  event = "VeryLazy",
   opts = {
     options = {
       icons_enabled = true,
