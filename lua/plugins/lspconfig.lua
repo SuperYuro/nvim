@@ -77,8 +77,9 @@ return {
       end,
 
       ["clangd"] = function()
+        cmp_capabilities.offsetEncoding = "utf-8"
         lspconfig["clangd"].setup({
-          capabilities = { cmp_capabilities, offsetEncoding = "utf-8" },
+          capabilities = cmp_capabilities,
         })
       end,
     })
