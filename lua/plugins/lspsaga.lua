@@ -12,6 +12,7 @@ return {
     { "<leader>ca", "<cmd>Lspsaga code_action<cr>", desc = "Code action" },
     { "gd", "<cmd>Lspsaga goto_definition<cr>", desc = "Goto definition" },
     { "<C-j>", "<cmd>Lspsaga diagnostic_jump_next<cr>", desc = "Goto next diagnostics" },
+    { "<leader>e", "<cmd>Lspsaga show_line_diagnostics<cr>", desc = "Show line diagnostics" },
   },
   opts = {
     lightbulb = {
