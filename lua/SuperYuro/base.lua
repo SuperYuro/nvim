@@ -4,8 +4,8 @@ vim.scriptencoding = "utf-8"
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
 
-vim.wo.number = true
-vim.wo.relativenumber = true
+-- vim.wo.number = true
+-- vim.wo.relativenumber = true
 
 vim.opt.mouse = ""
 
@@ -26,7 +26,7 @@ vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.autoindent = true -- Auto indent
 vim.opt.smartindent = true -- Smart indent
-vim.opt.wrap = false -- Wrap lines
+vim.opt.wrap = true -- Wrap lines
 vim.opt.backspace = "start,eol,indent"
 vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
 vim.opt.wildignore:append({ "*/node_modules/*", "*/venv/*", "*/.venv/*" })
