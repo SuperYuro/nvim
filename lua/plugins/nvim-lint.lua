@@ -24,12 +24,13 @@ local js_linter = function()
     return { biome_linter }
   end
 
-  return {}
+  return nil
 end
 
 return {
   "mfussenegger/nvim-lint",
   event = "VeryLazy",
+  enabled = false,
   config = function()
     require("lint").linters_by_ft = {
       python = { "flake8" },
