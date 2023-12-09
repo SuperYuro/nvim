@@ -52,7 +52,6 @@ return {
       enable = true,
       separator = "  ",
       show_file = true,
-      folder_level = 5,
     },
     diagnostics = {
       show_code_action = true,
