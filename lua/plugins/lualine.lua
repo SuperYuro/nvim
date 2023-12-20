@@ -2,6 +2,7 @@ local icons = require("utils.icons")
 
 return {
   "nvim-lualine/lualine.nvim",
+  dependencies = { "stevearc/aerial.nvim" },
   event = "VeryLazy",
   opts = {
     options = {
@@ -42,6 +43,10 @@ return {
           newfile_status = false,
           path = 1,
           -- symbols = {},
+        },
+        {
+          "aerial",
+          colored = true,
         },
       },
       lualine_x = {
