@@ -3,7 +3,7 @@ local icons = require("utils.icons")
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "stevearc/aerial.nvim" },
-  event = "VeryLazy",
+  event = "VimEnter",
   opts = {
     options = {
       icons_enabled = true,
