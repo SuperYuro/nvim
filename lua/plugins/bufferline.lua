@@ -32,7 +32,7 @@ return {
       show_close_icons = true,
       show_tab_indicators = false,
       show_duplicate_prefix = false,
-      separator_style = "slant",
+      separator_style = "thin",
       always_show_bufferline = true,
       hover = {
         enabled = true,
