@@ -2,6 +2,10 @@
 vim.diagnostic.config({
   virtual_text = {
     prefix = require("utils.icons").prelude.bell,
+    source = "always",
+  },
+  float = {
+    source = "always",
   },
   signs = false,
   underline = true,
@@ -22,7 +26,9 @@ local function goto_definition(split_cmd)
       return nil
     end
 
-    if split_cmd then vim.cmd(split_cmd) end
+    if split_cmd then
+      vim.cmd(split_cmd)
+    end
 
     if vim.tbl_islist(result) then
       util.jump_to_location(result[1])
@@ -41,3 +47,5 @@ local function goto_definition(split_cmd)
 end
 
 vim.lsp.handlers["textDocument/definition"] = goto_definition("split")
+
+-- Show diagnostics in hover window
