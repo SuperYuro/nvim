@@ -5,7 +5,7 @@ return {
     "nvim-lua/plenary.nvim",
   },
   keys = {
-    { "<leader>fb", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>", desc = "Telescope file browser" },
+    { "sf", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>", desc = "Telescope file browser" },
   },
   config = function()
     local telescope = require("telescope")
@@ -14,7 +14,8 @@ return {
       extensions = {
         file_browser = {
           theme = "dropdown",
-          hijack_netrw = true,
+          hijack_netrw = false,
+          initial_mode = "normal",
         },
       },
     })
