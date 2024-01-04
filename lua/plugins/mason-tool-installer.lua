@@ -6,7 +6,6 @@ return {
       -- Formatters
       "stylua",
       "clang-format",
-      "prettierd",
       "rustywind",
 
       "black",
