@@ -30,7 +30,7 @@ M.formatters = function()
   local formatters = {}
 
   if rc_file_exists(prettier_rc_files) then
-    table.insert(formatters, "prettierd")
+    table.insert(formatters, "prettier")
   elseif rc_file_exists(biome_rc_files) then
     -- BiomeとPrettierがconflictしないようにする
     table.insert(formatters, "biome")
