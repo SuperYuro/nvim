@@ -1,6 +1,7 @@
 return {
   "nvimtools/none-ls.nvim",
   event = "LspAttach",
+  enabled = false,
   dependencies = { "nvim-lua/plenary.nvim" },
   config = function()
     local null_ls = require("null-ls")
