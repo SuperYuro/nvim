@@ -15,6 +15,9 @@ local ensure_installed = {
   "astro",
   "tailwindcss",
 
+  "biome",
+  "eslint",
+
   "taplo",
 }
 
