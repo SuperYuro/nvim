@@ -24,6 +24,7 @@ local biome_rc_files = {
 local tailwind_rc_files = {
   "tailwind.config.js",
   "tailwind.config.mjs",
+  "tailwind.config.ts",
 }
 
 M.formatters = function()
