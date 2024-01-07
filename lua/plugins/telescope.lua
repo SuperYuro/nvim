@@ -1,6 +1,6 @@
 return {
   "nvim-telescope/telescope.nvim",
-  branch= "0.1.x",
+  branch = "0.1.x",
   event = "VeryLazy",
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -23,7 +23,6 @@ return {
       },
       pickers = {
         find_files = {
-          theme = "dropdown",
           find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
         },
         oldfiles = {
