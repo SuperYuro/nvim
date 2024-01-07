@@ -25,6 +25,8 @@ return {
       json = { "jq" },
       toml = { "taplo" },
       yaml = { "yamlfmt" },
+
+      fish = { "fish_indent" },
     },
     format_on_save = {
       timeout_ms = 10000,
