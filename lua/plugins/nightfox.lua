@@ -49,7 +49,7 @@ return {
         visual = true,
       },
     },
-    groups = groups,
+    -- groups = groups,
   },
   config = function(_, opts)
     require("nightfox").setup(opts)
