@@ -2,7 +2,10 @@ return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
   lazy = false,
-  dependencies = { { "yioneko/nvim-yati", tag = "*" } },
+  dependencies = {
+    { "yioneko/nvim-yati", version = "*" },
+    "nvim-treesitter/nvim-treesitter-context",
+  },
   config = function()
     require("nvim-treesitter.configs").setup({
       ensure_installed = "all",
