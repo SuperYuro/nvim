@@ -1,7 +1,7 @@
 return {
   "NeogitOrg/neogit",
   keys = {
-    { "g<space>", "<cmd>Neogit kind=auto<cr>", desc = "Launch neogit" },
+    { "g<space>", "<cmd>Neogit kind=tab<cr>", desc = "Launch neogit" },
   },
   dependencies = {
     "nvim-lua/plenary.nvim",
