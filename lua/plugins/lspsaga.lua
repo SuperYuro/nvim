@@ -50,7 +50,7 @@ return {
       },
     },
     symbol_in_winbar = {
-      enable = true,
+      enable = false,
       separator = "  ",
       show_file = true,
     },
