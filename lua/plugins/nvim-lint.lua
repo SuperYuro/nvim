@@ -3,7 +3,7 @@ return {
   event = "VeryLazy",
   config = function()
     require("lint").linters_by_ft = {
-      python = { "flake8" },
+      python = { "ruff" },
     }
 
     vim.api.nvim_create_autocmd({ "BufWritePost" }, {
