@@ -7,7 +7,5 @@ return {
       "treesitter",
     },
   },
-  config = function(_, opts)
-    require("illuminate").configure(opts)
-  end,
+  config = function(_, opts) require("illuminate").configure(opts) end,
 }

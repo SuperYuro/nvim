@@ -6,7 +6,5 @@ return {
   keys = {
     { "<leader>fq", "<cmd>Telescope frecency workspace=CWD<cr>", desc = "Telescope frecency" },
   },
-  config = function()
-    require("telescope").load_extension("frecency")
-  end,
+  config = function() require("telescope").load_extension("frecency") end,
 }
