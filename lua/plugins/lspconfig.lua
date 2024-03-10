@@ -55,20 +55,7 @@ return {
       ["denols"] = function()
         lspconfig["denols"].setup({
           capabilities = cmp_capabilities,
-          root_dir = lspconfig.util.root_pattern({ "deno.json", "deno.jsonc" }),
-          init_options = {
-            lint = true,
-            unstable = true,
-            suggest = {
-              imports = {
-                hosts = {
-                  ["https://deno.land"] = true,
-                  ["https://cdn.nest.land"] = true,
-                  ["https://crux.land"] = true,
-                },
-              },
-            },
-          },
+          root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
         })
       end,
 
@@ -76,6 +63,7 @@ return {
         lspconfig["tsserver"].setup({
           capabilities = cmp_capabilities,
           root_dir = lspconfig.util.root_pattern("package.json"),
+          single_file_support = false,
         })
       end,
 
