@@ -53,6 +53,9 @@ return {
           update_in_insert = true,
           always_visible = true,
         },
+        {
+          "overseer",
+        },
       },
       lualine_y = {
         "encoding",
