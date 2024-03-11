@@ -8,6 +8,7 @@ return {
     "typescriptreact",
     "svelte",
     "astro",
+    "vue",
   },
   dependencies = { "nvim-treesitter/nvim-treesitter" },
   config = true,
