@@ -27,6 +27,7 @@ return {
       yaml = { "yamlfmt" },
 
       fish = { "fish_indent" },
+      sh = { "beautysh" },
     },
     format_on_save = {
       timeout_ms = 10000,
