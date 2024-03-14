@@ -2,19 +2,9 @@ return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
   lazy = false,
-  dependencies = {
-    { "yioneko/nvim-yati", version = "*" },
-    "nvim-treesitter/nvim-treesitter-context",
+  main = "nvim-treesitter.configs",
+  opts = {
+    ensure_installed = "all",
+    highlight = { enable = true },
   },
-  config = function()
-    require("nvim-treesitter.configs").setup({
-      ensure_installed = "all",
-      highlight = { enable = true },
-      yati = {
-        enable = true,
-        default_lazy = true,
-      },
-      indent = { enable = false },
-    })
-  end,
 }
