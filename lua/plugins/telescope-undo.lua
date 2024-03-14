@@ -1,5 +1,6 @@
 return {
   "debugloop/telescope-undo.nvim",
+  cmd = { "Telescope" },
   dependencies = {
     "nvim-telescope/telescope.nvim",
     "nvim-lua/plenary.nvim",

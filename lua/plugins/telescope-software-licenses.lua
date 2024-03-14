@@ -1,6 +1,6 @@
 return {
   "chip/telescope-software-licenses.nvim",
-  event = "VeryLazy",
+  cmd = { "Telescope" },
   dependencies = {
     "nvim-telescope/telescope.nvim",
     "nvim-lua/plenary.nvim",

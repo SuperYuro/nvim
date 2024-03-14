@@ -1,5 +1,6 @@
 return {
   "nvim-telescope/telescope-frecency.nvim",
+  cmd = { "Telescope" },
   dependencies = {
     "nvim-telescope/telescope.nvim",
   },
