@@ -14,7 +14,7 @@ return {
     "jay-babu/mason-nvim-dap.nvim",
   },
   keys = {
-    { "<F5>", function() require("dap").continue() end, desc = "Continue debug" },
+    { "<C-F5>", function() require("dap").continue() end, desc = "Continue debug" },
     { "<F9>", function() require("dap").toggle_breakpoint() end, desc = "Toggle breakpoint" },
     { "<F10>", function() require("dap").step_over() end, desc = "Step over" },
     { "<F11>", function() require("dap").step_into() end, desc = "Step into" },
