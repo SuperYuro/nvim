@@ -18,6 +18,8 @@ local ensure_installed = {
   "biome",
   "eslint",
 
+  "ruff_lsp",
+
   "taplo",
 }
 
