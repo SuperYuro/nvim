@@ -1,5 +1,6 @@
 return {
   "NeogitOrg/neogit",
+  cmd = { "Neogit" },
   keys = {
     { "<leader>ng", "<cmd>Neogit kind=tab<cr>", desc = "Launch neogit" },
   },
