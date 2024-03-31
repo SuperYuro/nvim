@@ -39,13 +39,13 @@ return {
     })
   end,
   keys = {
-    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Telescope find files" },
-    { "<leader>rg", "<cmd>Telescope live_grep<cr>", desc = "Telescope live grep" },
-    { "<leader>bf", "<cmd>Telescope buffers<cr>", desc = "Telescope buffers" },
-    { "<leader>of", "<cmd>Telescope oldfiles<cr>", desc = "Telescope old files" },
-    { "<leader>dg", "<cmd>Telescope diagnostics<cr>", desc = "Telescope diagnostics" },
-    { "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Telescope git commits" },
-    { "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "Telescope git branches" },
-    { "<leader>ts", "<cmd>Telescope treesitter<cr>", desc = "Telescope treesitter" },
+    { ";f", "<cmd>Telescope find_files<cr>", desc = "Telescope find files" },
+    { ";g", "<cmd>Telescope live_grep<cr>", desc = "Telescope live grep" },
+    { ";b", "<cmd>Telescope buffers<cr>", desc = "Telescope buffers" },
+    { ";of", "<cmd>Telescope oldfiles<cr>", desc = "Telescope old files" },
+    { ";d", "<cmd>Telescope diagnostics<cr>", desc = "Telescope diagnostics" },
+    { ";gc", "<cmd>Telescope git_commits<cr>", desc = "Telescope git commits" },
+    { ";gb", "<cmd>Telescope git_branches<cr>", desc = "Telescope git branches" },
+    { ";s", "<cmd>Telescope treesitter<cr>", desc = "Telescope treesitter" },
   },
 }

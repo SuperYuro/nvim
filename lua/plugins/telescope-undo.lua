@@ -6,7 +6,7 @@ return {
     "nvim-lua/plenary.nvim",
   },
   keys = {
-    { "<leader>u", "<cmd>Telescope undo<cr>", desc = "Telescope history" },
+    { ";u", "<cmd>Telescope undo<cr>", desc = "Telescope history" },
   },
   config = function()
     require("telescope").setup({
