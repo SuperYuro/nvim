@@ -4,8 +4,10 @@ return {
   priority = 1000,
   opts = {
     options = {
-      inverse = {
-        visual = true,
+      styles = {
+        comments = "italic",
+        variables = "bold",
+        functions = "bold,italic",
       },
     },
   },
