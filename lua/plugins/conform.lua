@@ -15,12 +15,14 @@ return {
 
       html = js_formatters,
       css = js_formatters,
+      scss = js_formatters,
       javascript = js_formatters,
       javascriptreact = js_formatters,
       typescript = js_formatters,
       typescriptreact = js_formatters,
       svelte = js_formatters,
       astro = js_formatters,
+      vue = js_formatters,
 
       json = { "jq" },
       toml = { "taplo" },
