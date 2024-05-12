@@ -208,11 +208,6 @@ return {
     },
   },
   {
-    "j-hui/fidget.nvim",
-    event = "LspAttach",
-    opts = {},
-  },
-  {
     "folke/trouble.nvim",
     event = "LspAttach",
     dependencies = {
