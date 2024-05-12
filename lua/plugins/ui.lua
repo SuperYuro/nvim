@@ -12,6 +12,9 @@ return {
           variables = "bold",
           functions = "bold,italic",
         },
+        inverse = {
+          visual = true,
+        },
       },
     },
     config = function(_, opts)
