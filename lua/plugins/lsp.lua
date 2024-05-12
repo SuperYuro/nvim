@@ -152,7 +152,7 @@ return {
     cmd = { "Lspsaga" },
     keys = {
       { "<leader>lf", "<cmd>Lspsaga finder<cr>", desc = "Lspsaga finder" },
-      -- { "<leader>rn", "<cmd>Lspsaga rename<cr>", desc = "Lspsaga rename" },
+      { "<leader>rn", "<cmd>Lspsaga rename<cr>", desc = "Lspsaga rename" },
       { "K", "<cmd>Lspsaga hover_doc<cr>", desc = "Hover doc" },
       { "<leader>ca", "<cmd>Lspsaga code_action<cr>", desc = "Code action" },
       { "gd", "<cmd>Lspsaga goto_definition<cr>", desc = "Goto definition" },
@@ -211,18 +211,6 @@ return {
     "j-hui/fidget.nvim",
     event = "LspAttach",
     opts = {},
-  },
-  {
-    "smjonas/inc-rename.nvim",
-    cmd = "IncRename",
-    keys = {
-      {
-        "<leader>rn",
-        ":IncRename " .. vim.fn.expand("<cword>"),
-        desc = "Rename symbol",
-      },
-    },
-    config = true,
   },
   {
     "folke/trouble.nvim",
