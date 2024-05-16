@@ -25,9 +25,7 @@ return {
     },
     version = "*",
     opts = {},
-    config = function(_, opts)
-      require("git-conflict").setup(opts)
-
+    init = function()
       vim.api.nvim_create_autocmd("User", {
         pattern = "GitConflictDetected",
         callback = function()
@@ -39,18 +37,5 @@ return {
         end,
       })
     end,
-  },
-  {
-    "Dynge/gitmoji.nvim",
-    dependencies = {
-      "hrsh7th/nvim-cmp",
-    },
-    opts = {
-      filetypes = { "gitcommit", "NeogitCommitMessage" },
-      completion = {
-        append_space = true,
-      },
-    },
-    ft = { "gitcommit", "NeogitCommitMessage" },
   },
 }

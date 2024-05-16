@@ -17,10 +17,7 @@ return {
         },
       },
     },
-    config = function(_, opts)
-      require("nightfox").setup(opts)
-      vim.cmd("colorscheme nordfox")
-    end,
+    init = function() vim.cmd("colorscheme nordfox") end,
   },
   {
     "nvim-lualine/lualine.nvim",
@@ -150,7 +147,7 @@ return {
     opts = {
       lsp = {
         progress = {
-          enabled = false,
+          enabled = true,
         },
         -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
         override = {
@@ -241,6 +238,9 @@ return {
   },
   {
     "nvim-tree/nvim-tree.lua",
+    version = "*",
+    -- event = { "VimEnter" },
+    lazy = false,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     cmd = {
       "NvimTreeToggle",
@@ -251,16 +251,16 @@ return {
     keys = {
       { "<C-f>", "<cmd>NvimTreeToggle<cr>", desc = "Open file tree" },
     },
+    init = function()
+      vim.g.loaded_netrw = 1
+      vim.g.loaded_netrwPlugin = 1
+    end,
     opts = {
       filters = {
         dotfiles = true,
       },
+      disable_netrw = false,
+      hijack_netrw = true,
     },
-    config = function(_, opts)
-      vim.g.loaded_netrw = 1
-      vim.g.loaded_netrwPlugin = 1
-
-      require("nvim-tree").setup(opts)
-    end,
   },
 }

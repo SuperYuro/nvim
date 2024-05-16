@@ -19,6 +19,11 @@ local opts = {
     cache = {
       enabled = true,
     },
+    rtp = {
+      disabled_plugins = {
+        "netrwPlugin",
+      },
+    },
   },
 }
 

@@ -9,7 +9,6 @@ local debuggers = {
 
 return {
   {
-
     "mfussenegger/nvim-dap",
     dependencies = {
       "mfussenegger/nvim-dap-python",
@@ -22,7 +21,6 @@ return {
       { "<F11>", function() require("dap").step_into() end, desc = "Step into" },
     },
     config = function()
-      local dap = require("dap")
       local mason_dap = require("mason-nvim-dap")
 
       mason_dap.setup({

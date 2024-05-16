@@ -1,45 +1,18 @@
 return {
   {
-
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
-    cmd = { "Telescope" },
     dependencies = {
       "nvim-lua/plenary.nvim",
-    },
-    config = function()
-      local actions = require("telescope.actions")
 
-      require("telescope").setup({
-        defaults = {
-          mappings = {
-            i = {
-              -- Mappings for insert mode
-              ["<C-g>"] = actions.close,
-            },
-            n = {
-              -- Mappings for normal mode
-              ["q"] = actions.close,
-            },
-          },
-        },
-        pickers = {
-          find_files = {
-            find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
-          },
-          oldfiles = {
-            theme = "dropdown",
-          },
-          buffers = {
-            mappings = {
-              i = {
-                ["<C-d>"] = actions.delete_buffer + actions.move_to_top,
-              },
-            },
-          },
-        },
-      })
-    end,
+      "nvim-telescope/telescope-file-browser.nvim",
+      "debugloop/telescope-undo.nvim",
+      "xiyaowong/telescope-emoji.nvim",
+      "nvim-telescope/telescope-frecency.nvim",
+      "chip/telescope-software-licenses.nvim",
+      "stevearc/aerial.nvim",
+    },
+    cmd = { "Telescope" },
     keys = {
       { ";f", "<cmd>Telescope find_files<cr>", desc = "Telescope find files" },
       { ";g", "<cmd>Telescope live_grep<cr>", desc = "Telescope live grep" },
@@ -49,94 +22,67 @@ return {
       { ";gc", "<cmd>Telescope git_commits<cr>", desc = "Telescope git commits" },
       { ";gb", "<cmd>Telescope git_branches<cr>", desc = "Telescope git branches" },
       { ";s", "<cmd>Telescope treesitter<cr>", desc = "Telescope treesitter" },
-    },
-  },
-  {
-    "nvim-telescope/telescope-file-browser.nvim",
-    cmd = { "Telescope" },
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-      "nvim-lua/plenary.nvim",
-    },
-    keys = {
+
       { "sf", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>", desc = "Telescope file browser" },
-    },
-    config = function()
-      local telescope = require("telescope")
-
-      telescope.setup({
-        extensions = {
-          file_browser = {
-            theme = "dropdown",
-            hijack_netrw = false,
-            initial_mode = "normal",
-          },
-        },
-      })
-      telescope.load_extension("file_browser")
-    end,
-  },
-  {
-    "debugloop/telescope-undo.nvim",
-    cmd = { "Telescope" },
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-      "nvim-lua/plenary.nvim",
-    },
-    keys = {
       { ";u", "<cmd>Telescope undo<cr>", desc = "Telescope history" },
+      -- Telescope emoji comes here
+      { ";q", "<cmd>Telescope frecency workspace=CWD<cr>", desc = "Telescope frecency" },
+      -- Telescope software-licenses comes here
+      { "<leader>ar", "<cmd>Telescope aerial<cr>", desc = "Telescope aerial" },
     },
-    config = function()
-      require("telescope").setup({
-        extensions = {
-          undo = {},
-        },
-      })
-      require("telescope").load_extension("undo")
-    end,
-  },
-  {
-    "xiyaowong/telescope-emoji.nvim",
-    cmd = { "Telescope" },
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-      "nvim-lua/plenary.nvim",
-    },
-    config = function()
-      local telescope = require("telescope")
-
-      telescope.setup({
-        extensions = {
-          emoji = {
-            action = function(emoji)
-              vim.fn.setreg("*", emoji.value)
-              print([[Press p or "*p to paste this emoji]] .. emoji.value)
-              vim.api.nvim_put({ emoji.value }, "c", false, true)
-            end,
+    opts = {
+      defaults = {
+        mappings = {
+          i = {
+            -- Mappings for insert mode
+            ["<C-g>"] = require("telescope.actions").close,
+          },
+          n = {
+            -- Mappings for normal mode
+            ["q"] = require("telescope.actions").close,
           },
         },
-      })
+      },
+      pickers = {
+        find_files = {
+          find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+        },
+        oldfiles = {
+          theme = "dropdown",
+        },
+        buffers = {
+          mappings = {
+            i = {
+              ["<C-d>"] = require("telescope.actions").delete_buffer + require("telescope.actions").move_to_top,
+            },
+          },
+        },
+      },
+      extensions = {
+        file_browser = {
+          theme = "dropdown",
+          hijack_netrw = false,
+          initial_mode = "normal",
+        },
+        undo = {},
+        emoji = {
+          action = function(emoji)
+            vim.fn.setreg("*", emoji.value)
+            print([[Press p or "*p to paste this emoji]] .. emoji.value)
+            vim.api.nvim_put({ emoji.value }, "c", false, true)
+          end,
+        },
+      },
+    },
+    init = function()
+      local telescope = require("telescope")
+
+      telescope.load_extension("file_browser")
+      telescope.load_extension("undo")
       telescope.load_extension("emoji")
+      telescope.load_extension("frecency")
+      telescope.load_extension("software-licenses")
+      telescope.load_extension("aerial")
     end,
-  },
-  {
-    "nvim-telescope/telescope-frecency.nvim",
-    cmd = { "Telescope" },
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-    },
-    keys = {
-      { ";q", "<cmd>Telescope frecency workspace=CWD<cr>", desc = "Telescope frecency" },
-    },
-    config = function() require("telescope").load_extension("frecency") end,
-  },
-  {
-    "chip/telescope-software-licenses.nvim",
-    cmd = { "Telescope" },
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-      "nvim-lua/plenary.nvim",
-    },
-    config = function() require("telescope").load_extension("software-licenses") end,
   },
 }

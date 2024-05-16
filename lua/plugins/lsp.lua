@@ -195,7 +195,7 @@ return {
         },
       },
       symbol_in_winbar = {
-        enable = false,
+        enable = true,
         separator = "  ",
         show_file = true,
       },
@@ -248,7 +248,7 @@ return {
         "flake8",
         "yamllint",
       },
-      auto_update = true,
+      auto_update = false,
       run_on_start = true,
     },
   },
