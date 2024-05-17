@@ -1,6 +1,5 @@
 return {
   {
-
     "nvim-treesitter/nvim-treesitter",
     dependencies = { "yioneko/nvim-yati" },
     build = ":TSUpdate",
@@ -26,7 +25,17 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons",
+      "nvim-telescope/telescope.nvim",
+    },
+    keys = {
+      { "<leader>ar", "<cmd>Telescope aerial<cr>", desc = "Telescope aerial" },
     },
     opts = {},
+    config = function(_, opts)
+      require("aerial").setup(opts)
+
+      local telescope = require("telescope")
+      telescope.load_extension("aerial")
+    end,
   },
 }
