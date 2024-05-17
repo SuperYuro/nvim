@@ -38,21 +38,6 @@ return {
           },
         },
       },
-      extensions = {
-        file_browser = {
-          theme = "dropdown",
-          hijack_netrw = false,
-          initial_mode = "normal",
-        },
-        undo = {},
-        emoji = {
-          action = function(emoji)
-            vim.fn.setreg("*", emoji.value)
-            print([[Press p or "*p to paste this emoji]] .. emoji.value)
-            vim.api.nvim_put({ emoji.value }, "c", false, true)
-          end,
-        },
-      },
     },
   },
   {
