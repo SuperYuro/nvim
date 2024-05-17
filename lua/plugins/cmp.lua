@@ -26,6 +26,7 @@ return {
       "hrsh7th/cmp-nvim-lsp-signature-help",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
+      "saadparwaiz1/cmp_luasnip",
     },
     config = function()
       local cmp = require("cmp")
